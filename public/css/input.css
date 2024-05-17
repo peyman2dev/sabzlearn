@@ -41,7 +41,6 @@
   src: url(../fonts/dana/Dana-Black.woff);
 }
 
-
 body {
-    @apply font-Dana-Regular
+  @apply font-Dana-Regular bg-[#F3F4F6];
 }

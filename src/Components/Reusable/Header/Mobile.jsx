@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Mobile() {
   return (
-    <div>Mobile</div>
+    <nav className='lg:hidden lg:invisible'>Mobile</nav>
   )
 }

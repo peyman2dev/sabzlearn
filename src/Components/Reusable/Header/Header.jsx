@@ -4,7 +4,7 @@ import Mobile from './Mobile'
 
 export default function Header() {
   return (
-    <header>
+    <header className='lg:p-7 bg-white'>
         <Windows />
         <Mobile />
     </header>
