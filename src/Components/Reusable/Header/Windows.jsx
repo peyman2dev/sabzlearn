@@ -3,12 +3,13 @@ import _ from "lodash";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Loggedin from "../Loggedin/Loggedin";
 
 export default function Windows() {
   const { menus } = useSelector((state) => state.server);
 
   return (
-    <nav className="container flex items-center justify-between">
+    <nav className="px-10 flex items-center justify-between">
       <ul className="flex items-center gap-5">
         {menus && menus.length
           ? _.map(menus, (menu, index) =>
@@ -20,7 +21,7 @@ export default function Windows() {
                       <ArrowDown2 className="transition-all duration-300 rotate-90 w-3 group-hover:rotate-0" />
                     </span>
                   </Link>
-                  <ul className="absolute border-t dark:border-t-white/10 space-y-2.5 opacity-0 invisible duration-300 group-hover:visible group-hover:opacity-100 w-[246px] rounded-lg bg-white dark:bg-black shadow-md p-3">
+                  <ul className="absolute border-t dark:border-t-white/10 space-y-3 p-4 opacity-0 invisible duration-300 group-hover:visible group-hover:opacity-100 w-[246px] rounded-lg bg-white dark:bg-black shadow-md ">
                     {_.map(menu.submenus, (sub, index) => (
                       <li key={index}>
                         <Link
@@ -41,7 +42,9 @@ export default function Windows() {
             )
           : ""}
       </ul>
-      <div>2</div>
+      <div>
+        <Loggedin />
+      </div>
     </nav>
   );
 }

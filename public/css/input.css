@@ -44,3 +44,13 @@
 body {
   @apply font-Dana-Regular bg-[#F3F4F6];
 }
+
+* {
+  @apply select-none
+}
+
+
+
+.active-animation {
+  @apply duration-150 hover:bg-opacity-90 active:scale-[0.98] active:bg-opacity-100
+}

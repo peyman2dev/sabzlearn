@@ -10,6 +10,7 @@ export const getMeuns = createAsyncThunk(
     }
 )
 
+
 export const getMe = createAsyncThunk(
     "serverReducer/getMe",
     async () => {
@@ -18,6 +19,9 @@ export const getMe = createAsyncThunk(
                 Authorization: `Bearer ${token}`
             }
         }).then(res => res.data)
-            .then(data => data)
+            .then(data => {
+                console.log(data)
+                return data
+            })
     }
 )
