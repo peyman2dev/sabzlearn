@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@font-face {
+  font-family: "Dana-Thin";
+  src: url(../fonts/dana/Dana-Thin.woff);
+}
+
+@font-face {
+  font-family: "Dana-Light";
+  src: url(../fonts/dana/Dana-Light.woff);
+}
+@font-face {
+  font-family: "Dana-Regular";
+  src: url(../fonts/dana/Dana-Regular.woff);
+}
+
+@font-face {
+  font-family: "Dana-Medium";
+  src: url(../fonts/dana/Dana-Medium.woff);
+}
+@font-face {
+  font-family: "Dana-Demi";
+  src: url(../fonts/dana/Dana-Demi.woff);
+}
+
+@font-face {
+  font-family: "Dana-Bold";
+  src: url(../fonts/dana/Dana-Bold.woff);
+}
+
+@font-face {
+  font-family: "Dana-ExtraBold";
+  src: url(../fonts/dana/Dana-ExtraBold.woff);
+}
+
+@font-face {
+  font-family: "Dana-Black";
+  src: url(../fonts/dana/Dana-Black.woff);
+}
+
+
+body {
+    @apply font-Dana-Regular
+}
