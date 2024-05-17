@@ -4,7 +4,7 @@ import useDispatchs from "./Utils/Hooks/useDispatchs";
 
 export default function App() {
   const routes = useRouter();
-  useDispatchs();
+  const dispatchs =useDispatchs();
 
   return routes;
 }
