@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import themeHandler from "../../Functions/themeHandler";
 
 const themeReducer = createSlice({
     name: "themeReducer",
@@ -8,19 +9,22 @@ const themeReducer = createSlice({
 
     reducers: {
         themeToggle: (state, action) => {
+            themeHandler.action({
+                isExist: true,
+                state
+            })
+        },
+        themeMount: (state, action) => {
             const localTheme = localStorage.getItem('theme')
-            if (!localTheme || localTheme === "light") {
-                localStorage.setItem('theme', 'dark')
-                document.documentElement.className = "dark"
+            themeHandler.mount()
+            if (localTheme && localTheme == "dark") {
                 state.isDark = true
             } else {
-                localStorage.setItem('theme', 'light')
-                document.documentElement.className = "light"
                 state.isDark = false
             }
         }
     }
 })
 
-export const { themeToggle } = themeReducer.actions
+export const { themeToggle, themeMount } = themeReducer.actions
 export default themeReducer.reducer

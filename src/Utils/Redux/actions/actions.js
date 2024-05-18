@@ -25,3 +25,12 @@ export const getMe = createAsyncThunk(
             })
     }
 )
+
+export const getCourses = createAsyncThunk(
+    "serverReducer/getCourses",
+    async () => {
+        return api.get('/courses')
+        .then(res => res.data)
+        .then(data => data)
+    }
+)

@@ -50,14 +50,11 @@ body {
 }
 
 .dark {
-  @apply bg-[#111827]
+  @apply bg-[#111827] text-white
 }
 
-.dark * {
-  @apply text-slate-50
-}
 
-* {
+button {
   @apply select-none
 }
 

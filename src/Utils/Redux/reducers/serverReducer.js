@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMe, getMeuns } from "../actions/actions.js";
+import { getCourses, getMe, getMeuns } from "../actions/actions.js";
 const serverReducer = createSlice({
     name: "serverReducer",
     initialState: {
@@ -7,7 +7,8 @@ const serverReducer = createSlice({
         menus: [],
         user: {
             isLoggedIn: false
-        }
+        },
+        isLoading: true
     },
 
     extraReducers: builder => {
@@ -20,6 +21,10 @@ const serverReducer = createSlice({
             })
             .addCase(getMe.fulfilled, (state, action) => {
                 console.log(action)
+            })
+            .addCase(getCourses.fulfilled, (state, action) => {
+                state.courses = action.payload
+                state.isLoading = false
             })
     }
 })

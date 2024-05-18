@@ -41,3 +41,9 @@ export default function Hero() {
     </section>
   );
 }
+
+
+
+
+
+// https://youtube.com/shorts/6s8fXoRTEjo?si=0dBIDfgfRoVNrs9J
