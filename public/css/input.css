@@ -42,7 +42,19 @@
 }
 
 body {
-  @apply font-Dana-Regular bg-[#F3F4F6];
+  @apply font-Dana-Regular ;
+}
+
+.light {
+  @apply bg-[#F3F4F6]
+}
+
+.dark {
+  @apply bg-[#111827]
+}
+
+.dark * {
+  @apply text-slate-50
 }
 
 * {
