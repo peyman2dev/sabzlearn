@@ -13,14 +13,14 @@ export default function Product(props) {
           url={shortURL}
           children={
             <img
-              src=""
+              src={props.cover}
               alt={props.name}
               className="w-full h-full object-cover"
             />
           }
         />
       </header>
-      <main className="mt-4 border-b border-white/5 mx-5 py-2.5">
+      <main className="border-b border-white/5 mx-5 py-3">
         <Linked
           url={shortURL}
           children={

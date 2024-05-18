@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="my-[100px] flex-col-reverse child:w-full lg:justify-between gap-6 lg:flex-row text-center w-[95%] mx-auto lg:text-start justify-center xl:pr-[215px] flex items-center">
       <div>
-        <h2 className="md:text-[2.5rem] lg:text-[3.5rem] text-zinc-800 tracking-tight text-4xl lg:leading-[64px] font-Dana-Black">
+        <h2 className="md:text-[2.5rem] lg:text-[3.5rem] text-zinc-800 dark:text-slate-100 tracking-tight text-4xl lg:leading-[64px] font-Dana-Black">
           آکادمی آموزش
           <br />
           برنامه نویسی سبزلرن
