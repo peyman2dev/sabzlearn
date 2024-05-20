@@ -19,30 +19,35 @@ export default function DetailCard({
         </h3>
         <div className="mt-3">
           <span className="font-bold text-2xl ">{value.toLocaleString()}</span>
-          <span className="dark:text-slate-400">{cap}</span>
+          <span className="dark:text-slate-400 text-zinc-400 text-sm">
+            {cap}
+          </span>
         </div>
-        <div className="mt-3 flex items-center gap-1">
-          <span className={timeline >= 0 ? "text-green-500" : "text-red-500"}>
-            {timeline >= 0 ? (
-              <Transmit className="w-5 pb-1" />
-            ) : (
-              <Receive className="w-5 pb-1" />
-            )}
-          </span>
-          <span
-            className={`text-lg font-medium ${
-              timeline >= 0 ? "text-green-500" : "text-red-500"
-            }`}
-          >
-            {timeline}%
-          </span>
-          <span className="text-sm px-1 inline-block dark:text-slate-400 text-zinc-700">
+        <div className="mt-3 flex-row  sm:flex-col lg:flex-row flex lg:items-center gap-2">
+          <div className="flex items-center gap-1">
+            <span className={timeline >= 0 ? "text-green-500" : "text-red-500"}>
+              {timeline >= 0 ? (
+                <Transmit className="w-5 pb-1" />
+              ) : (
+                <Receive className="w-5 pb-1" />
+              )}
+            </span>
+            <span
+              className={`text-lg font-medium ${
+                timeline >= 0 ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              {timeline}%
+            </span>
+          </div>
+          <div>
+          <span className="min-w-max text-sm inline-block dark:text-slate-400 text-zinc-700">
             {timeline >= 0 && lang === "persian" && "افزایش نسبت به ماه گذشته"}
             {timeline <= 0 && lang === "persian" && "کاهش نسبت به ماه گذشته"}
             {timeline >= 0 && lang === "english" && "Up from yesterday"}
             {timeline <= 0 && lang === "english" && "Down from yesterday"}
-
           </span>
+          </div>
         </div>
       </div>
       <div

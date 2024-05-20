@@ -36,6 +36,12 @@ const english = {
                 }
             }
         }
+    },
+    texts: {
+        theme: {
+            dark: "Change to dark mode",
+            light: "Change to Light mode"
+        }
     }
 }
 

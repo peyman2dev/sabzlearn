@@ -34,7 +34,7 @@ export default function Home() {
           title={t("dashboard.pages.home.details.totalSales.title")}
           value={t("dashboard.pages.home.details.totalSales.count")}
           timeline={t("dashboard.pages.home.details.totalSales.timeline")}
-          cap={lang === "persian" ? " تومان" : " Tomans"}
+          cap={lang === "persian" ? " تومان" : " Toman's"}
         />
         <DetailCard
           icon={<Eye variant="Bold" className="w-14 h-8" />}

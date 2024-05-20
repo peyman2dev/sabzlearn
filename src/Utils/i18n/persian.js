@@ -14,27 +14,33 @@ const persian = {
                 title: "داشبورد",
                 details: {
                     totalUsers: {
-                        title:"تعداد کاربران",
+                        title: "تعداد کاربران",
                         count: 40689,
                         timeline: 8.5
                     },
                     totalActiveUsers: {
-                        title:"کاربران فعال",
+                        title: "کاربران فعال",
                         count: 10293,
                         timeline: 1.3
                     },
                     totalSales: {
-                        title:"تعداد فروش",
+                        title: "تعداد فروش",
                         count: 19245000,
                         timeline: -4.3
                     },
                     totalViews: {
-                        title:"بازدید کل",
+                        title: "بازدید کل",
                         count: 492048,
                         timeline: 12.42
                     },
                 }
             },
+        }
+    },
+    texts: {
+        theme: {
+            dark: "تغییر به حالت شب",
+            light: "تغییر به حالت روز"
         }
     }
 }
