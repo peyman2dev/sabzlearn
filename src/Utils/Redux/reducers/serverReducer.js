@@ -37,6 +37,7 @@ const serverReducer = createSlice({
             })
             .addCase(getLogin.fulfilled, (state, action) => {
                 const localTheme = localStorage.getItem('theme')
+                localStorage.setItem('token', action.payload.accessToken)
                 toast.success("شما با موفقیت وارد شدید!", {
                     autoClose: 2500,
                     position: "top-left",
@@ -44,6 +45,9 @@ const serverReducer = createSlice({
                     className: "font-Dana-Regular",
                     closeOnClick: true,
                     theme: localTheme,
+                    onClose: () => {
+                        window.location.pathname = '/'
+                    },
                     transition: Bounce,
                 })
             })
