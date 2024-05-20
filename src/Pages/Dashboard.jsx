@@ -8,6 +8,7 @@ import Menus from "../Components/Pages/Dashboard/Pages/Menus";
 import Users from "../Components/Pages/Dashboard/Pages/Users";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories";
 import Comments from "../Components/Pages/Dashboard/Pages/Comments";
+import { Helmet } from "react-helmet";
 
 export default function Dashboard() {
   const routes = [
@@ -22,39 +23,44 @@ export default function Dashboard() {
       element: <Courses />,
     },
     {
-        id: crypto.randomUUID(),
-        path: "articles",
-        element: <Articles />,
-      },
-      {
-        id: crypto.randomUUID(),
-        path: "menus",
-        element: <Menus />,
-      },
-      {
-        id: crypto.randomUUID(),
-        path: "users",
-        element: <Users />,
-      },
-      {
-        id: crypto.randomUUID(),
-        path: "categories",
-        element: <Categories />,
-      },
-      {
-        id: crypto.randomUUID(),
-        path: "comments",
-        element: <Comments />,
-      },
+      id: crypto.randomUUID(),
+      path: "articles",
+      element: <Articles />,
+    },
+    {
+      id: crypto.randomUUID(),
+      path: "menus",
+      element: <Menus />,
+    },
+    {
+      id: crypto.randomUUID(),
+      path: "users",
+      element: <Users />,
+    },
+    {
+      id: crypto.randomUUID(),
+      path: "categories",
+      element: <Categories />,
+    },
+    {
+      id: crypto.randomUUID(),
+      path: "comments",
+      element: <Comments />,
+    },
   ];
+
   return (
-    <>
+    <section className="flex gap-[30px]">
+      <Helmet title=" داشبورد | خانه" />
+
       <Sidebar />
+      <main className="mt-10">
       <Routes
         children={routes.map((route, index) => (
           <Route key={route.id} path={route.path} element={route.element} />
         ))}
       />
-    </>
+      </main>
+    </section>
   );
 }
