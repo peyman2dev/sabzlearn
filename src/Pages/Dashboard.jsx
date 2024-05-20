@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../Components/Pages/Dashboard/Comps/Sidebar";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Dashboard/Pages/Home";
@@ -9,9 +9,12 @@ import Users from "../Components/Pages/Dashboard/Pages/Users";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories";
 import Comments from "../Components/Pages/Dashboard/Pages/Comments";
 import { Helmet } from "react-helmet";
-import i18n from 'i18next'
+import i18n from "../Utils/i18n";
+import Header from "../Components/Pages/Dashboard/Comps/Header";
 
 export default function Dashboard() {
+  const lang = localStorage.getItem('language') || 'persian'
+  const [show, setShow] = useState(true)
   const routes = [
     {
       id: crypto.randomUUID(),
@@ -49,18 +52,25 @@ export default function Dashboard() {
       element: <Comments />,
     },
   ];
+
   return (
-    <section className={`flex gap-[30px]`} style={{direction:  i18n.language === "persian" ? "rtl" : "ltr"}}>
+    <section
+    className={`flex dark:bg-[#1B2431] ${lang === "english" ? "font-En-Regular" : ""}`}
+     style={{ direction: i18n.language === "persian" ? "rtl" : "ltr" }}>
       <Helmet title=" داشبورد | خانه" />
 
-      <Sidebar />
-      <main className="mt-10">
-      <Routes
-        children={routes.map((route, index) => (
-          <Route key={route.id} path={route.path} element={route.element} />
-        ))}
-      />
-      </main>
+        <Sidebar show={show}/>
+
+        <main className="w-full ">
+        <Header setShow={setShow} show={show}/>
+        <section className="w-[90%] mx-auto">
+          <Routes
+            children={routes.map((route, index) => (
+              <Route key={route.id} path={route.path} element={route.element} />
+            ))}
+          />
+        </section>
+        </main>
     </section>
   );
 }

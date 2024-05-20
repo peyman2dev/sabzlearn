@@ -2,9 +2,10 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import english from './english.js'
 import persian from './persian.js'
+const lng = localStorage.getItem('language') || "persian"
 
 const resources = {
-    en: {
+    english: {
         translation: english
     },
     persian: {
@@ -18,7 +19,7 @@ i18n
     .use(initReactI18next)
     .init({
         resources,
-        lng: "persian",
+        lng,
         interpolation: {
             escapeValue: false
         }

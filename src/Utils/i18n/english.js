@@ -1,5 +1,5 @@
 const english = {
-    dashboard:{
+    dashboard: {
         routes: {
             home: "Home",
             courses: "Courses",
@@ -11,7 +11,29 @@ const english = {
         },
         pages: {
             home: {
-                title: "Dashboard"
+                title: "Dashboard",
+                details: {
+                    totalUsers: {
+                        title: "Total users",
+                        count: 40689,
+                        timeline: 8.5
+                    },
+                    totalActiveUsers: {
+                        title: "Active users",
+                        count: 10293,
+                        timeline: 1.3
+                    },
+                    totalSales: {
+                        title: "Total sales",
+                        count: 19245000,
+                        timeline: -4.3
+                    },
+                    totalViews: {
+                        title: "Total views",
+                        count: 492048,
+                        timeline: 12.42
+                    },
+                }
             }
         }
     }

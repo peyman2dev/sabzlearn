@@ -23,6 +23,9 @@ export default {
         "Dana-ExtraBold": "Dana-ExtraBold",
         "Dana-Black": "Dana-Black",
 
+        "En-Regular": "En-Regular",
+        "En-Medium": "En-Medium"
+
       }
     },
   },

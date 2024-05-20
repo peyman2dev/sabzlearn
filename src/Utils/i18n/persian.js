@@ -11,8 +11,30 @@ const persian = {
         },
         pages: {
             home: {
-                title: "داشبورد"
-            }
+                title: "داشبورد",
+                details: {
+                    totalUsers: {
+                        title:"تعداد کاربران",
+                        count: 40689,
+                        timeline: 8.5
+                    },
+                    totalActiveUsers: {
+                        title:"کاربران فعال",
+                        count: 10293,
+                        timeline: 1.3
+                    },
+                    totalSales: {
+                        title:"تعداد فروش",
+                        count: 19245000,
+                        timeline: -4.3
+                    },
+                    totalViews: {
+                        title:"بازدید کل",
+                        count: 492048,
+                        timeline: 12.42
+                    },
+                }
+            },
         }
     }
 }
