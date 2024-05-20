@@ -4,7 +4,6 @@ import Linked from "./Linked";
 import { Profile2User, Star1, User } from "iconsax-react";
 
 export default function Product(props) {
-  console.log(props);
   const shortURL = `/course/${props.shortName}`;
   return (
     <article className="bg-white dark:bg-[#242a38] rounded-xl overflow-hidden shadow-md w-full">

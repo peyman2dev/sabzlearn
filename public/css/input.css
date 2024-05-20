@@ -46,20 +46,34 @@ body {
 }
 
 .light {
-  @apply bg-[#F3F4F6]
+  @apply bg-[#F3F4F6];
 }
 
 .dark {
-  @apply bg-[#111827] text-white
+  @apply bg-[#111827] text-white;
 }
-
 
 button {
-  @apply select-none
+  @apply select-none;
+}
+
+.form {
+  @apply lg:w-[440px] child:w-full p-6 dark:bg-[#2F3542] bg-white rounded-2xl  lg:max-h-max flex flex-col  w-full ;
+}
+
+.active-animation {
+  @apply duration-150 hover:bg-opacity-90 active:scale-[0.98] active:bg-opacity-100;
+}
+
+.form-input {
+  @apply w-full block h-12 my-3 dark:bg-[#252a35] outline-none bg-[#f1f1f16c] rounded-md px-5;
 }
 
 
+.form-input::placeholder {
+  direction: rtl !important;
+}
 
-.active-animation {
-  @apply duration-150 hover:bg-opacity-90 active:scale-[0.98] active:bg-opacity-100
+.Toastify {
+  @apply font-Dana-Regular;
 }

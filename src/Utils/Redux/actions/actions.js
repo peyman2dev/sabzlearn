@@ -19,10 +19,7 @@ export const getMe = createAsyncThunk(
                 Authorization: `Bearer ${token}`
             }
         }).then(res => res.data)
-            .then(data => {
-                console.log(data)
-                return data
-            })
+            .then(data => data)
     }
 )
 
@@ -30,7 +27,29 @@ export const getCourses = createAsyncThunk(
     "serverReducer/getCourses",
     async () => {
         return api.get('/courses')
-        .then(res => res.data)
-        .then(data => data)
+            .then(res => res.data)
+            .then(data => data)
+    }
+)
+
+
+export const getLogin = createAsyncThunk(
+    "serverReducer/getLogin",
+    async ({ user, setIsLoading }) => {
+        return api.post('/auth/login', user).then(res => res.data).then(data => data).finally(() => {
+            setIsLoading(false)
+        })
+    }
+)
+
+export const getRegister = createAsyncThunk(
+    "serverReducer/getRegister",
+    async ({
+        user,
+        setIsLoading
+    }) => {
+        return api.post("/auth/register", user).then(res => res.data).then(data => data).finally(() => {
+            setIsLoading(false)
+        })
     }
 )
