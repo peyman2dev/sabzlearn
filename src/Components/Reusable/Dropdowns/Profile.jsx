@@ -1,4 +1,11 @@
-import { Blend, Folder2, Home2, Logout, Message } from "iconsax-react";
+import {
+  Blend,
+  Folder2,
+  Home2,
+  Lock,
+  Logout,
+  Message,
+} from "iconsax-react";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -26,7 +33,7 @@ export default function Profile() {
       <div
         className={`${
           show ? "" : "opacity-0 invisible"
-        } duration-150 w-[300px] z-[1] p-3 rounded-lg shadow-lg dark:bg-[#242a38] bg-white absolute left-0`}
+        } duration-150 w-[300px] z-[1] p-5 rounded-lg shadow-lg dark:bg-[#242a38] bg-white absolute left-0`}
       >
         <header className="flex pb-3 items-center gap-3">
           <span className="w-12 h-12 rounded-full bg-cover bg-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRsQp3QfMCj9fdrpDdMhuC_UQgbwA6o6dZ25_J1Lp4lg&s')]"></span>
@@ -46,6 +53,14 @@ export default function Profile() {
             </span>
             <span>پیشخوان</span>
           </Link>
+          { user.role === "ADMIN" &&
+            <Link to={`/dashboard`}>
+            <span>
+              <Lock />
+            </span>
+            <span>پنل مدیریت</span>
+          </Link>
+          }
           <Link to={`/my-account/courses`}>
             <span>
               <Folder2 />
@@ -72,14 +87,15 @@ export default function Profile() {
           </Link>
         </main>
         <footer className="pt-1">
-          <button onClick={() => {
-            localStorage.removeItem('token')
-            window.location.reload()
-          }} className="p-3 w-full gap-3 rounded-md flex items-center duration-150 hover:text-white hover:bg-red-500">
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.reload();
+            }}
+            className="p-3 w-full gap-3 rounded-md flex items-center duration-150 hover:text-white hover:bg-red-500"
+          >
             <Logout />
-        <span>
-          خروج
-        </span>
+            <span>خروج</span>
           </button>
         </footer>
       </div>
