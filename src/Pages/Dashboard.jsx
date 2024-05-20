@@ -9,6 +9,7 @@ import Users from "../Components/Pages/Dashboard/Pages/Users";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories";
 import Comments from "../Components/Pages/Dashboard/Pages/Comments";
 import { Helmet } from "react-helmet";
+import i18n from 'i18next'
 
 export default function Dashboard() {
   const routes = [
@@ -48,9 +49,8 @@ export default function Dashboard() {
       element: <Comments />,
     },
   ];
-
   return (
-    <section className="flex gap-[30px]">
+    <section className={`flex gap-[30px]`} style={{direction:  i18n.language === "persian" ? "rtl" : "ltr"}}>
       <Helmet title=" داشبورد | خانه" />
 
       <Sidebar />

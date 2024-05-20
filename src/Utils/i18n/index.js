@@ -4,8 +4,12 @@ import english from './english.js'
 import persian from './persian.js'
 
 const resources = {
-    en: english,
-    persian: persian
+    en: {
+        translation: english
+    },
+    persian: {
+        translation: persian
+    },
 }
 
 
@@ -20,4 +24,4 @@ i18n
         }
     })
 
-    export default i18n
+export default i18n

@@ -1,12 +1,19 @@
 const persian = {
-    dashRoutes: {
-        home: "خانه",
-        courses: "دوره ها",
-        articles: "مقالات",
-        menus: "منو ها",
-        users: "کاربران",
-        categories: "دسته بندی ها",
-        comments: "نظرات",
+    dashboard: {
+        routes: {
+            home: "صفحه اصلی",
+            courses: "دوره ها",
+            articles: "مقالات",
+            menus: "منو ها",
+            users: "کاربران",
+            categories: "دسته بندی ها",
+            comments: "نظرات",
+        },
+        pages: {
+            home: {
+                title: "داشبورد"
+            }
+        }
     }
 }
 
