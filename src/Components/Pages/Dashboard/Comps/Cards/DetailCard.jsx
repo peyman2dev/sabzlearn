@@ -12,48 +12,24 @@ export default function DetailCard({
   const lang = localStorage.getItem("language");
   console.log(lang);
   return (
-    <article className="w-full p-3 bg-white rounded-lg dark:bg-[#273142] border border-white/5 flex gap-3 justify-between">
+    <article className="w-full lg:w-[270px] p-2 px-3.5 border dark:border-white/5 bg-white rounded-lg dark:bg-[#222f40] flex justify-between">
       <div>
-        <h3 className="font-Dana-Medium text-gray-500 dark:text-slate-400">
-          {title}
-        </h3>
-        <div className="mt-3">
-          <span className="font-bold text-2xl ">{value.toLocaleString()}</span>
-          <span className="dark:text-slate-400 text-zinc-400 text-sm">
+        <p className="text-sm mb-3 dark:text-slate-400">{title}</p>
+        <div className="flex items-center gap-1">
+          <h4 className="text-lg font-bold text-zinc-700 dark:text-slate-200">
+            {value.toLocaleString()}
+          </h4>
+          <span className="text-xs dark:text-slate-500 text-zinc-500 ">
             {cap}
           </span>
         </div>
-        <div className="mt-3 flex-row  sm:flex-col lg:flex-row flex lg:items-center gap-2">
-          <div className="flex items-center gap-1">
-            <span className={timeline >= 0 ? "text-green-500" : "text-red-500"}>
-              {timeline >= 0 ? (
-                <Transmit className="w-5 pb-1" />
-              ) : (
-                <Receive className="w-5 pb-1" />
-              )}
-            </span>
-            <span
-              className={`text-lg font-medium ${
-                timeline >= 0 ? "text-green-500" : "text-red-500"
-              }`}
-            >
-              {timeline}%
-            </span>
-          </div>
-          <div>
-          <span className="min-w-max text-sm inline-block dark:text-slate-400 text-zinc-700">
-            {timeline >= 0 && lang === "persian" && "افزایش نسبت به ماه گذشته"}
-            {timeline <= 0 && lang === "persian" && "کاهش نسبت به ماه گذشته"}
-            {timeline >= 0 && lang === "english" && "Up from yesterday"}
-            {timeline <= 0 && lang === "english" && "Down from yesterday"}
-          </span>
-          </div>
-        </div>
       </div>
-      <div
-        className={`w-12 flex items-center justify-center ${color} bg-opacity-10 rounded-full h-12`}
-      >
-        {icon}
+      <div>
+        <span
+          className={`${color}  flex items-center justify-center w-12 bg-opacity-10 min-h-12 rounded-full`}
+        >
+          {icon}
+        </span>
       </div>
     </article>
   );

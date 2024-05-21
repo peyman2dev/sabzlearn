@@ -10,6 +10,8 @@ import {
   Message,
   Profile2User,
 } from "iconsax-react";
+
+
 import { useTranslation } from "react-i18next";
 
 export default function Sidebar({ show }) {
@@ -24,74 +26,103 @@ export default function Sidebar({ show }) {
     `}
     >
       <NavLink to={""} end className={isLinkActive()}>
+        
         <span
           className={`${
-            show ? "" : "min-w-[80px] flex items-center justify-center"
-          }`}
+            show
+              ? "min-w-[30px]"
+              : "w-[80px] min-w-[80px] flex items-center justify-center"
+          } duration-150`}
         >
           <Home2 />
         </span>
-        <span>{t("dashboard.routes.home")}</span>
+        <span className="min-w-max whitespace-nowrap">
+          {t("dashboard.routes.home")}
+        </span>
       </NavLink>
       <NavLink to={"courses"} end className={isLinkActive()}>
         <span
           className={`${
-            show ? "" : "min-w-[80px] flex items-center justify-center"
-          }`}
+            show
+              ? "min-w-[40px]"
+              : "w-[80px] min-w-[80px] flex items-center justify-center"
+          } duration-150`}
         >
           <Folder2 />
         </span>
-        <span>{t("dashboard.routes.courses")}</span>
+        <span className="min-w-max whitespace-nowrap">
+          {t("dashboard.routes.courses")}
+        </span>
       </NavLink>
       <NavLink to={"articles"} end className={isLinkActive()}>
         <span
           className={`${
-            show ? "" : "min-w-[80px] flex items-center justify-center"
-          }`}
+            show
+              ? "min-w-[40px]"
+              : "w-[80px] min-w-[80px] flex items-center justify-center"
+          } duration-150`}
         >
           <Bookmark2 />
         </span>
-        <span>{t("dashboard.routes.articles")}</span>
+        <span className="min-w-max whitespace-nowrap">
+          {t("dashboard.routes.articles")}
+        </span>
       </NavLink>
       <NavLink to={"menus"} end className={isLinkActive()}>
         <span
           className={`${
-            show ? "" : "min-w-[80px] flex items-center justify-center"
-          }`}
+            show
+              ? "min-w-[40px]"
+              : "w-[80px] min-w-[80px] flex items-center justify-center"
+          } duration-150`}
         >
           <MenuBoard />
         </span>
-        <span>{t("dashboard.routes.menus")}</span>
+        <span className="min-w-max whitespace-nowrap">
+          {t("dashboard.routes.menus")}
+        </span>
       </NavLink>
       <NavLink to={"users"} end className={isLinkActive()}>
         <span
           className={`${
-            show ? "" : "min-w-[80px] flex items-center justify-center"
-          }`}
+            show
+              ? "min-w-[40px]"
+              : "w-[80px] min-w-[80px] flex items-center justify-center"
+          } duration-150`}
         >
           <Profile2User />
         </span>
-        <span>{t("dashboard.routes.users")}</span>
+        <span className="min-w-max whitespace-nowrap">
+          {t("dashboard.routes.users")}
+        </span>
       </NavLink>
       <NavLink to={"categories"} end className={isLinkActive()}>
         <span
           className={`${
-            show ? "" : "min-w-[80px] flex items-center justify-center"
-          }`}
+            show
+              ? "min-w-[40px]"
+              : "w-[80px] min-w-[80px] flex items-center justify-center"
+          } duration-150`}
         >
           <Category2 />
         </span>
-        <span>{t("dashboard.routes.categories")}</span>
+        <span className="min-w-max whitespace-nowrap">
+          {t("dashboard.routes.categories")}
+        </span>
       </NavLink>
       <NavLink to={"comments"} end className={isLinkActive()}>
         <span
           className={`${
-            show ? "" : "min-w-[80px] flex items-center justify-center"
-          }`}
+            show
+              ? "min-w-[40px]"
+              : "w-[80px] min-w-[80px] flex items-center justify-center"
+          } duration-150`}
         >
           <Message />
         </span>
-        <span>{t("dashboard.routes.comments")}</span>
+        <span className="min-w-max whitespace-nowrap">
+          {t("dashboard.routes.comments")}
+        </span>{" "}
       </NavLink>
     </aside>
   );

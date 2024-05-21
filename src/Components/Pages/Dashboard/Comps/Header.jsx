@@ -146,14 +146,14 @@ export default function Header({ setShow, show }) {
 
         <div
           onClick={() => setMobShow(!mobShow)}
-          className={`fixed duration-150 w-full h-screen top-0 right-0 bg-black/20 backdrop-blur-sm ${
+          className={`fixed duration-150 w-full z-10 h-screen top-0 right-0 bg-black/20 backdrop-blur-sm ${
             mobShow ? "" : "opacity-0 invisible"
           }`}
         ></div>
         <div
           className={`fixed top-0 duration-300 ${
             lang === "persian" ? "right-0" : "left-0"
-          } bg-white dark:bg-slate-700 w-[245px] h-screen child:flex child:items-center child:p-3.5 child:rounded-lg pr-2 pl-3 child:gap-4 pt-5 ${
+          } bg-white dark:bg-slate-700 w-[245px] z-10 h-screen child:flex child:items-center child:p-3.5 child:rounded-lg pr-2 pl-3 child:gap-4 pt-5 ${
             mobShow && lang === "persian" ? "" : "translate-x-[500px]"
           }`}
         >

@@ -12,6 +12,7 @@ const persian = {
         pages: {
             home: {
                 title: "داشبورد",
+                secTitle: "آمار وبسایت",
                 details: {
                     totalUsers: {
                         title: "تعداد کاربران",

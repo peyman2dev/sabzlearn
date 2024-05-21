@@ -33,7 +33,8 @@ const english = {
                         count: 492048,
                         timeline: 12.42
                     },
-                }
+                },
+                secTitle: "Website statistics",
             }
         }
     },

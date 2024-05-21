@@ -2,16 +2,40 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import DetailCard from "../Comps/Cards/DetailCard";
 import { Eye, Profile2User, Shop, UserTick } from "iconsax-react";
+import Chart from "../../../Reusable/Charts/Chart";
 
 export default function Home() {
   const lang = localStorage.getItem('language')
   const { t, i18n } = useTranslation();
+
+  const datas = [
+    {
+      name: "فروش دوره",
+      count: 12400,
+      pv: 50400,
+    },
+    {
+      name: "بازدید این ماه",
+      count: 496_993,
+      pv: 286942,
+    },
+    {
+      name: "کامنت این ماه",
+      count: 97400,
+      pv: 24000,
+    },
+    {
+      name: "تیکت ها",
+      count: 39520,
+      pv: 64000,
+    },
+  ]
   return (
     <>
       <h1 className="text-2xl font-Dana-Demi">
         {t("dashboard.pages.home.title")}
       </h1>
-      <section className="mt-[27px] grid items-center gap-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+      <section className="mt-[27px] justify-center lg:justify-start  flex flex-wrap gap-1 xl:gap-2">
         <DetailCard
           icon={<Profile2User variant="Bold" className="w-14 h-8" />}
           color={"text-rose-500 bg-rose-500"}
@@ -44,6 +68,12 @@ export default function Home() {
           timeline={t("dashboard.pages.home.details.totalViews.timeline")}
           cap={lang === "persian" ? " بازدید" : " Views"}
         />
+      </section>
+      <section className="my-[47px] w-full">
+      <h2 className="text-2xl mb-5 font-Dana-Demi">
+        {t("dashboard.pages.home.secTitle")}
+      </h2>
+        <Chart data={datas}/>
       </section>
     </>
   );
