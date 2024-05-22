@@ -6,10 +6,7 @@ export default function Courses() {
   return (
     <>
     <Helmet title='داشبورد | مدیریت دوره ها'/>
-    <Title link={{
-      title: "ایجاد دوره",
-      url: "create"
-    }} title={"داشبورد | دوره ها"}/>
+
     </>
   )
 }

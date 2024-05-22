@@ -9,7 +9,7 @@ export default function ThemeButton() {
     
   return (
     <div>
-        <button onClick={() => dispatch(themeToggle())} className='w-12 h-12 rounded-full dark:bg-[#2F3542] bg-gray-50 flex items-center justify-center'>
+        <button onClick={() => dispatch(themeToggle())} className='w-12 h-12 rounded-full dark:bg-[#333C4C] bg-gray-50 flex items-center justify-center'>
             {
                 isDark ? 
                 <Moon />

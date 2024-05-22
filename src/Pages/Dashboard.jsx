@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Dashboard/Pages/Home";
-import Courses from '../Components/Pages/Dashboard/Pages/Courses/Courses'
+import Courses from "../Components/Pages/Dashboard/Pages/Courses/Courses";
 import Articles from "../Components/Pages/Dashboard/Pages/Articles";
 import Menus from "../Components/Pages/Dashboard/Pages/Menus";
 import Users from "../Components/Pages/Dashboard/Pages/Users";
@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet";
 import _ from "lodash";
 import Sidebar from "../Components/Pages/Dashboard/Components/Sidebar";
 import Create from "../Components/Pages/Dashboard/Pages/Courses/Create";
+import Header from "../Components/Pages/Dashboard/Components/Header";
 
 export default function Dashboard() {
   const lang = localStorage.getItem("language") || "persian";
@@ -59,18 +60,20 @@ export default function Dashboard() {
   ];
 
   return (
-    <section className="p-20 py-5 bg-[#101010] text-[#101010!important]">
-      <Helmet title=" داشبورد | خانه" />
-      <main className="flex gap-4">
+    <>
+      <main className="flex  bg-[#F4F7FE] text-[#2B3674] dark:bg-[#0B1437]">
         <Sidebar />
-        <section className="p-10 bg-white w-full rounded-[42px] min-h-[95vh]">
-          <Routes
-            children={_.map(routes, (route, index) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))}
-          />
+        <section className="w-full">
+          <Header />
+          <section>
+            <Routes
+              children={_.map(routes, (route, index) => (
+                <Route key={index} path={route.path} element={route.element} />
+              ))}
+            />
+          </section>
         </section>
       </main>
-    </section>
+    </>
   );
 }
