@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import Sidebar from "../Components/Pages/Dashboard/Comps/Sidebar";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Dashboard/Pages/Home";
-import Courses from "../Components/Pages/Dashboard/Pages/Courses";
+import Courses from '../Components/Pages/Dashboard/Pages/Courses/Courses'
 import Articles from "../Components/Pages/Dashboard/Pages/Articles";
 import Menus from "../Components/Pages/Dashboard/Pages/Menus";
 import Users from "../Components/Pages/Dashboard/Pages/Users";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories";
 import Comments from "../Components/Pages/Dashboard/Pages/Comments";
 import { Helmet } from "react-helmet";
-import i18n from "../Utils/i18n";
-import Header from "../Components/Pages/Dashboard/Comps/Header";
-import Tippy from "@tippyjs/react";
+import _ from "lodash";
+import Sidebar from "../Components/Pages/Dashboard/Components/Sidebar";
+import Create from "../Components/Pages/Dashboard/Pages/Courses/Create";
 
 export default function Dashboard() {
   const lang = localStorage.getItem("language") || "persian";
@@ -19,13 +18,18 @@ export default function Dashboard() {
   const routes = [
     {
       id: crypto.randomUUID(),
-      path: "/",
+      path: "",
       element: <Home />,
     },
     {
       id: crypto.randomUUID(),
       path: "courses",
       element: <Courses />,
+    },
+    {
+      id: crypto.randomUUID(),
+      path: "courses/create",
+      element: <Create />,
     },
     {
       id: crypto.randomUUID(),
@@ -55,22 +59,14 @@ export default function Dashboard() {
   ];
 
   return (
-    <section
-      className={`flex dark:bg-[#1B2431] ${
-        lang === "english" ? "font-En-Regular" : ""
-      }`}
-      style={{ direction: i18n.language === "persian" ? "rtl" : "ltr" }}
-    >
+    <section className="p-20 py-5 bg-[#101010] text-[#101010!important]">
       <Helmet title=" داشبورد | خانه" />
-
-      <Sidebar show={show} setShow={setShow} />
-
-      <main className="w-full ">
-        <Header setShow={setShow} show={show} />
-        <section className="w-[95%] mx-auto">
+      <main className="flex gap-4">
+        <Sidebar />
+        <section className="p-10 bg-white w-full rounded-[42px] min-h-[95vh]">
           <Routes
-            children={routes.map((route, index) => (
-              <Route key={route.id} path={route.path} element={route.element} />
+            children={_.map(routes, (route, index) => (
+              <Route key={index} path={route.path} element={route.element} />
             ))}
           />
         </section>

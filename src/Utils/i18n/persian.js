@@ -13,6 +13,7 @@ const persian = {
             home: {
                 title: "داشبورد",
                 secTitle: "آمار وبسایت",
+                latestProduct: "آخرین محصول",
                 details: {
                     totalUsers: {
                         title: "تعداد کاربران",

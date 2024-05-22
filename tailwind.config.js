@@ -26,6 +26,9 @@ export default {
         "En-Regular": "En-Regular",
         "En-Medium": "En-Medium"
 
+      },
+      colors: {
+        "dark": "#273142"
       }
     },
   },

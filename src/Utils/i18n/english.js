@@ -7,7 +7,7 @@ const english = {
             menus: "Menus",
             users: "Users",
             categories: "Categories",
-            comments: "comments",
+            comments: "Comments",
         },
         pages: {
             home: {
@@ -35,6 +35,7 @@ const english = {
                     },
                 },
                 secTitle: "Website statistics",
+                latestProduct: "Featured Product",
             }
         }
     },
