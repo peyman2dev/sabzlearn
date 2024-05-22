@@ -63,7 +63,7 @@ export default function Dashboard() {
         <Sidebar />
         <section className="w-full">
           <Header />
-          <section className="mt-20">
+          <section className="px-6">
             <Routes
               children={_.map(routes, (route, index) => (
                 <Route key={index} path={route.path} element={route.element} />

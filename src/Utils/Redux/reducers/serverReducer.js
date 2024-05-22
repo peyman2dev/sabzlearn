@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCourses, getLogin, getMe, getMeuns, getRegister } from "../actions/actions.js";
+import { getArticles, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
 import { Bounce, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.min.css'
-import api from "../../Api/api.js";
 
 const serverReducer = createSlice({
     name: "serverReducer",
     initialState: {
         courses: [],
         menus: [],
+        users: [],
+        articles: [],
         user: {
             isLoggedIn: false,
             userInfos: {}
@@ -95,6 +96,12 @@ const serverReducer = createSlice({
                     theme: localTheme,
                     transition: Bounce,
                 })
+            })
+            .addCase(getUsers.fulfilled, (state,action) => {
+                state.users = action.payload
+            })
+            .addCase(getArticles.fulfilled, (state,action) => {
+                state.articles = action.payload
             })
     }
 })

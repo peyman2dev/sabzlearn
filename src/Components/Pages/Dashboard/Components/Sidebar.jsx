@@ -61,7 +61,7 @@ export default function Sidebar() {
       </header>
       <main className="child:flex space-y-1 pt-9 pr-[34px]  child:p-3 child:items-center child:gap-3 child:w-full ">
         {_.map(routes, (route) => (
-          <NavLink end={route.path === "" && true} className={isLinkActive()} to={route.path} children={
+          <NavLink key={route.id} end={route.path === "" && true} className={isLinkActive()} to={route.path} children={
             <>
             <span>
             {route.icon}

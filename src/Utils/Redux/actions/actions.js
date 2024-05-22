@@ -53,3 +53,27 @@ export const getRegister = createAsyncThunk(
         })
     }
 )
+
+export const getUsers = createAsyncThunk(
+    "serverReducer/getUsers",
+    async () => {
+        return api.get( "/users", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(res => res.data)
+        .then(data => data)
+    }
+)
+
+export const getArticles = createAsyncThunk(
+    "serverReducer/getArticles",
+    async () => {
+        return api.get( "/articles", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(res => res.data)
+        .then(data => data)
+    }
+)
