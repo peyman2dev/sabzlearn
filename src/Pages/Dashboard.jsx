@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Dashboard/Pages/Home";
 import Courses from "../Components/Pages/Dashboard/Pages/Courses/Courses";
@@ -14,8 +14,6 @@ import Create from "../Components/Pages/Dashboard/Pages/Courses/Create";
 import Header from "../Components/Pages/Dashboard/Components/Header";
 
 export default function Dashboard() {
-  const lang = localStorage.getItem("language") || "persian";
-  const [show, setShow] = useState(false);
   const routes = [
     {
       id: crypto.randomUUID(),
@@ -61,11 +59,11 @@ export default function Dashboard() {
 
   return (
     <>
-      <main className="flex  bg-[#F4F7FE] text-[#2B3674] dark:bg-[#0B1437]">
+      <main className="flex  dark:text-white bg-[#F4F7FE] text-[#2B3674] dark:bg-[#0B1437]">
         <Sidebar />
         <section className="w-full">
           <Header />
-          <section>
+          <section className="mt-20">
             <Routes
               children={_.map(routes, (route, index) => (
                 <Route key={index} path={route.path} element={route.element} />

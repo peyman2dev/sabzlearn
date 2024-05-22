@@ -851,6 +851,10 @@ video {
   width: 41px;
 }
 
+.w-\[249px\] {
+  width: 249px;
+}
+
 .min-w-\[240px\] {
   min-width: 240px;
 }
@@ -983,6 +987,10 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
 }
 
 .rounded-e-3xl {
@@ -1390,6 +1398,11 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .font-bold {

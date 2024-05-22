@@ -19,7 +19,12 @@ export default function Header() {
   };
   return (
     <nav className="w-full pt-[49px] px-[30px] flex items-center justify-between">
-        <div>s</div>
+        <div>
+        <div className="flex items-center gap-2"></div>
+        <h1 className="text-3xl font-Dana-Medium">
+            مدیر عزیز; خوش آمدید 🙌
+        </h1>
+        </div>
       <div className="dark:bg-[#111C44] dark:text-white text-[#A3AED0] bg-[#FFFFFF] py-2.5 px-[11px] rounded-3xl flex items-center gap-5">
       <button className="w-[41px] h-[41px] rounded-full overflow-hidden">
             <img src="https://img.freepik.com/free-photo/portrait-smiling-charming-young-man-grey-t-shirt-standing-against-plain-background_23-2148213406.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1716336000&semt=ais_user" alt="تصویر مدیر" />
