@@ -4,7 +4,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import isLinkActive from "../../../../Utils/Functions/isLinkActive";
-import { ArchiveBook, Category, Folder2, Home2, MenuBoard, MessageText, Profile2User } from "iconsax-react";
+import { ArchiveBook, Category, Folder2, Home2, MenuBoard, MessageText, Profile2User, SearchNormal } from "iconsax-react";
 
 export default function Sidebar() {
   const user = useSelector((state) => state.server.user.userInfos);
@@ -26,6 +26,12 @@ export default function Sidebar() {
       path: "articles",
       title: t("dashboard.routes.articles"),
       icon: <ArchiveBook /> ,
+    },
+    {
+      id: crypto.randomUUID(),
+      path: "search",
+      title: "جستجو",
+      icon: <SearchNormal /> ,
     },
     {
       id: crypto.randomUUID(),
@@ -54,10 +60,8 @@ export default function Sidebar() {
   ];
   return (
     <aside className="min-w-[290px] dark:bg-[#111C44]  relative min-h-screen bg-white ">
-      <header className="py-12 border-b flex dark:text-white items-center justify-center">
-    <p>
-      خوش آمدید
-    </p>
+      <header className="py-6 border-b flex dark:border-white/5 dark:text-white items-center justify-center">
+    <img src="/images/logo.png" alt="Logo CMS" className="w-20" />
       </header>
       <main className="child:flex space-y-1 pt-9 pr-[34px]  child:p-3 child:items-center child:gap-3 child:w-full ">
         {_.map(routes, (route) => (

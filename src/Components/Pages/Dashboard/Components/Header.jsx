@@ -7,6 +7,7 @@ import "@tippyjs/react/";
 import "tippy.js/dist/tippy.css"; // optional
 
 export default function Header() {
+  const [query, setQuery] = useState("")
   const [isDark, setIsDark] = useState(
     localStorage.getItem("theme") == "dark" ? true : false
   );
@@ -17,6 +18,11 @@ export default function Header() {
       _theme === "dark" ? setIsDark(true) : setIsDark(false);
     },
   };
+
+  const queryUpdate = value => {
+    console.log(value)
+  }
+  
   return (
     <nav className="w-full mb-10 pt-[49px] px-[30px] flex items-center justify-between">
         <div>
@@ -48,6 +54,8 @@ export default function Header() {
         <div className="h-[41px] flex items-center relative w-[214px]">
           <SearchNormal1 className="w-5 text-[#2B3674] absolute z-10 h-5 right-3" />
           <input
+          onKeyDown={event => queryUpdate(evnet.target.value)}
+          required={true}
             type="text"
             className="h-full placeholder:text-sm w-full  top-0 right-0 absolute dark:bg-[#0B1437] rounded-3xl px-11 bg-[#F4F7FE] outline-none"
             placeholder="جستجو کنید .."

@@ -12,6 +12,7 @@ import _ from "lodash";
 import Sidebar from "../Components/Pages/Dashboard/Components/Sidebar";
 import Create from "../Components/Pages/Dashboard/Pages/Courses/Create";
 import Header from "../Components/Pages/Dashboard/Components/Header";
+import Search from "../Components/Pages/Dashboard/Pages/Search";
 
 export default function Dashboard() {
   const routes = [
@@ -34,6 +35,11 @@ export default function Dashboard() {
       id: crypto.randomUUID(),
       path: "articles",
       element: <Articles />,
+    },
+    {
+      id: crypto.randomUUID(),
+      path: "search",
+      element: <Search />,
     },
     {
       id: crypto.randomUUID(),
