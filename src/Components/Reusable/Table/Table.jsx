@@ -10,7 +10,7 @@ export default function Table({ rows, columns }) {
   const TableRender = {
 
     Header: (
-      <header className=" w-full  flex px-5 dark:bg-dark text-sm justify-between py-3 mt-1 select-none rounded-t-2xl text-center child:w-full">
+      <header className=" w-full  flex px-5 bg-gray-50 dark:bg-dark text-sm justify-between py-3 select-none rounded-t-2xl text-center child:w-full">
         {_.map(columns, (col, index) => (
           <div key={index} className=" w-full">{col.headerName}</div>
         ))}
@@ -33,13 +33,13 @@ export default function Table({ rows, columns }) {
       ));
     },
 
-    Main: (render) => <main className="cursor-grab select-none">{render()}</main>,
+    Main: (render) => <main className="cursor-grab divide-y dark:divide-white/10 select-none">{render()}</main>,
   };
 
   const { filteringModule } = TableRender;
 
   return (
-    <div className="flex overflow-x-auto  flex-col">
+    <div className="flex overflow-x-auto  flex-col border dark:border-white/5 rounded-2xl">
       {TableRender.Header}
       {TableRender.Main(filteringModule)}
     </div>

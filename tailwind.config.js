@@ -29,7 +29,8 @@ export default {
       },
       colors: {
         "dark": "#273142",
-        "dark-sm": "#111C44"
+        "dark-sm": "#111C44",
+        "light": "#A3AED0"
       }
     },
   },
