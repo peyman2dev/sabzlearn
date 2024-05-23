@@ -13,6 +13,7 @@ import Chart from "../Components/Home/Chart";
 import LastUsers from "../Components/Home/LastUsers";
 import LastCourses from "../Components/Home/LastCourses";
 import OnlineUsers from "../Components/Home/OnlineUsers";
+import LastArticle from "../Components/Home/LastArticle";
 
 export default function Home() {
   const courses = useSelector((state) => state.server.courses);
@@ -64,9 +65,9 @@ export default function Home() {
       </section>
       <section className="my-10">
         <LastCourses />
-
-        <section className="my-10">
+        <section className="my-10 flex gap-5">
         <OnlineUsers />
+        <LastArticle />
         </section>
       </section>
     </>
