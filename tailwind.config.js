@@ -28,7 +28,8 @@ export default {
 
       },
       colors: {
-        "dark": "#273142"
+        "dark": "#273142",
+        "dark-sm": "#111C44"
       }
     },
   },

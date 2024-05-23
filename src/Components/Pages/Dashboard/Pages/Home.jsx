@@ -9,6 +9,8 @@ import {
   Profile2User,
 } from "iconsax-react";
 import { useSelector } from "react-redux";
+import Chart from "../Components/Home/Chart";
+import LastUsers from "../Components/Home/LastUsers";
 
 export default function Home() {
   const courses = useSelector((state) => state.server.courses);
@@ -53,6 +55,10 @@ export default function Home() {
         {_.map(datas, (data) => (
           <DataCard key={data.id} {...data} />
         ))}
+      </section>
+      <section className="mt-10 flex gap-5">
+        <Chart />
+        <LastUsers />
       </section>
     </>
   );
