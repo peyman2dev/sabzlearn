@@ -12,7 +12,7 @@ export default function Table({ rows, columns }) {
     Header: (
       <header className=" w-full  flex px-5 bg-gray-50 dark:bg-dark text-sm justify-between py-3 select-none rounded-t-2xl text-center child:w-full">
         {_.map(columns, (col, index) => (
-          <div key={index} className=" w-full">{col.headerName}</div>
+          <div key={index} className="min-w-[162px] w-full">{col.headerName}</div>
         ))}
       </header>
     ),
@@ -33,7 +33,7 @@ export default function Table({ rows, columns }) {
       ));
     },
 
-    Main: (render) => <main className="cursor-grab divide-y dark:divide-white/10 select-none">{render()}</main>,
+    Main: (render) => <main className="cursor-grab divide-y dark:divide-white/10">{render()}</main>,
   };
 
   const { filteringModule } = TableRender;

@@ -45,7 +45,7 @@ export default function Product({ editable, course }) {
             </span>
         </div>
         <div>
-            <Link to={`courses`} className="px-4 py-2 text-white rounded-lg bg-[#7551FF] text-xs">
+            <Link to={`courses`} className="px-4 py-2 text-white rounded-lg bg-primary dark:bg-[#7551FF] text-xs">
                 مدیریت
             </Link>
         </div>

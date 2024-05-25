@@ -59,7 +59,7 @@ export default function Sidebar() {
     },
   ];
   return (
-    <aside className="min-w-[290px] dark:bg-[#111C44]  relative min-h-screen bg-white ">
+    <aside className="min-w-[290px] lg:visible lg:block hidden invisible dark:bg-[#111C44]  relative min-h-screen bg-white ">
       <header className="py-6 border-b flex dark:border-white/5 dark:text-white items-center justify-center">
     <img src="/images/logo.png" alt="Logo CMS" className="w-20" />
       </header>

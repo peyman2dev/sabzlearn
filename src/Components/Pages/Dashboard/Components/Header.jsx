@@ -24,7 +24,7 @@ export default function Header() {
   }
   
   return (
-    <nav className="w-full mb-10 pt-[49px] px-[30px] flex items-center justify-between">
+    <nav className="w-full mb-10 lg:visible hidden invisible pt-[49px] px-[30px] lg:flex items-center justify-between">
         <div>
         <div className="flex items-center gap-2"></div>
         <h1 className="text-3xl font-Dana-Medium">

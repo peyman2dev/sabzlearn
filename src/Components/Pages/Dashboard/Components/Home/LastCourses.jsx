@@ -9,7 +9,7 @@ export default function LastCourses() {
   const courses = useSelector((state) => state.server.courses);
   return (
     <>
-    <div className="w-full flex items-center justify-between">
+    <div className="w-full  flex items-center justify-between">
         <h4 className="text-2xl font-Dana-Bold">
             آخرین دوره ها
         </h4>
@@ -18,7 +18,7 @@ export default function LastCourses() {
         <ArrowLeft2 className="w-4"/>
         </Link>
     </div>
-    <section className="grid xl:grid-cols-4 gap-5 mt-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+    <section className="grid xl:grid-cols-4 lg:grid-cols-3 gap-5 mt-10 sm:grid-cols-2 grid-cols-1">
       {_.slice(courses, 0, 4).map((course, index) => (
         <Product editable={false} course={course} key={index} />
       ))}

@@ -30,7 +30,7 @@ export default function LastUsers() {
   ];
 
   return (
-    <div className="w-full dark:bg-dark-sm bg-white p-5 rounded-2xl">
+    <div className=" dark:bg-dark-sm bg-white p-5 rounded-2xl">
       <header >
         <div className="w-full flex items-center justify-between">
           <p className="text-xl font-Dana-Demi">کاربران اخیر</p>

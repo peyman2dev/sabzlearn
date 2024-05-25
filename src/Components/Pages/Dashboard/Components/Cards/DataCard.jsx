@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function DataCard(props) {
   return (
-    <article className='flex items-center gap-4 w-[249px] bg-white dark:bg-[#111C44] p-5 rounded-2xl'>
+    <article className='flex items-center gap-4 w-full sm:w-[249px] bg-white dark:bg-[#111C44] p-5 rounded-2xl'>
         <div className='dark:bg-[#1B254B] bg-[#F4F7FE] rounded-full overflow-hidden w-12 h-12  flex items-center justify-center'>
         {props.icon}
         </div>

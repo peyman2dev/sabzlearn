@@ -7,7 +7,7 @@ export default function OnlineUsers() {
   const flexBetween = "flex items-center justify-between";
 
   return (
-    <article className="dark:bg-dark-sm p-5 bg-white shadow-sm rounded-2xl lg:w-[382px]">
+    <article className="dark:bg-dark-sm p-5 bg-white shadow-sm rounded-2xl w-full ">
       <header className={flexBetween}>
         <div>
           <h4 className="text-xl font-Dana-Bold">کاربران فعال</h4>
@@ -19,7 +19,7 @@ export default function OnlineUsers() {
         </Tippy>
       </header>
       <main className="space-y-3 child:bg-zinc-50 child:border child:border-zinc-50/50 dark:child:border-white/5 mt-6">
-        <div className="p-5 rounded-xl w-full  flex items-center justify-between dark:bg-[#1B254B]">
+        <div className="p-2 rounded-xl w-full  flex items-center justify-between dark:bg-[#1B254B]">
           <div className="flex items-center gap-3">
             <div className="max-w-14 min-w-14 max-h-14 min-h-14 h-14 rounded-full overflow-hidden">
               <img
@@ -39,7 +39,7 @@ export default function OnlineUsers() {
                 </button>
           </div>
         </div>
-        <div className="p-5 rounded-xl w-full  flex items-center justify-between dark:bg-[#1B254B]">
+        <div className="p-2 rounded-xl w-full  flex items-center justify-between dark:bg-[#1B254B]">
           <div className="flex items-center gap-3">
             <div className="max-w-14 min-w-14 max-h-14 min-h-14 h-14 rounded-full overflow-hidden">
               <img
@@ -59,7 +59,7 @@ export default function OnlineUsers() {
                 </button>
           </div>
         </div>
-        <div className="p-5 rounded-xl w-full  flex items-center justify-between dark:bg-[#1B254B]">
+        <div className="p-2 rounded-xl w-full  flex items-center justify-between dark:bg-[#1B254B]">
           <div className="flex items-center gap-3">
             <div className="max-w-14 min-w-14 max-h-14 min-h-14 h-14 rounded-full overflow-hidden">
               <img

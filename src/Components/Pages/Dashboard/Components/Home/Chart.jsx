@@ -75,7 +75,7 @@ export default function Chart() {
   return (
     <div
       className={
-        "lg:max-w-[540px] lg:min-w-[540px] p-6 h-[345px] bg-white rounded-2xl dark:bg-[#111C44]"
+        "p-6 h-[345px] bg-white rounded-2xl dark:bg-[#111C44]"
       }
     >
       <header>

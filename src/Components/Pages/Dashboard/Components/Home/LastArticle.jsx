@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function LastArticle() {
   return (
-    <article className="dark:bg-dark-sm p-5 flex flex-col justify-between bg-white shadow-sm rounded-2xl lg:w-[382px]">
+    <article className="dark:bg-dark-sm p-5 flex flex-col justify-between bg-white shadow-sm rounded-2xl w-full">
       <div>
         <header className="relative rounded-2xl overflow-hidden">
           <img src="/images/articles/cleancode.png" alt="" />
