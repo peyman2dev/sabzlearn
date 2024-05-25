@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../Api/api";
 const token = localStorage.getItem('token')
 
@@ -57,31 +57,32 @@ export const getRegister = createAsyncThunk(
 export const getUsers = createAsyncThunk(
     "serverReducer/getUsers",
     async () => {
-        return api.get( "/users", {
+        return api.get("/users", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then(res => res.data)
-        .then(data => data)
+            .then(data => data)
     }
 )
 
 export const getArticles = createAsyncThunk(
     "serverReducer/getArticles",
     async () => {
-        return api.get( "/articles", {
+        return api.get("/articles", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then(res => res.data)
-        .then(data => data)
+            .then(data => data)
     }
 )
 export const getCategories = createAsyncThunk(
-    "serverReducer/getCategories", 
+    "serverReducer/getCategories",
     async () => {
         return api.get('/category')
-        .then(res => res.data)
-        .then(data => data)
+            .then(res => res.data)
+            .then(data => data)
     }
 )
+

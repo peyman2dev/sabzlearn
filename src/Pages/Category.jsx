@@ -1,113 +1,111 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Components/Reusable/Header/Header";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import Header from "../Components/Reusable/Header/Header";
+import _, { isString } from "lodash";
 import CategoriesProvider from "../Utils/Contexts/CategoriesProvider";
-import Sidebar from "../Components/Pages/Categories/Components/Sidebar/Sidebar";
-import { freeCoursesOnly } from "../Utils/Redux/reducers/serverReducer";
+import Sidebar from "../Components/Pages/Categories/Sidebar";
 
 export default function Category() {
-  const dispatch = useDispatch()
-  const [_courses, setCourses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [target, setTarget] = useState({});
-  const { categories, courses } = useSelector((state) => state.server);
+  const { courses, categories } = useSelector((state) => state.server);
+  const [targetCategory, setTargetCategory] = useState({});
+  const [products, setProducts] = useState(null);
+  const [reset, setReset] = useState(null)
   const { category } = useParams();
   const { Provider } = CategoriesProvider;
 
-  // Finding the target category
-  const findTarget = () => {
-    let filteredCategory = categories.filter((cat) => cat.name == category);
-    let courseFiltering = courses.filter(
-      (course) => course.categoryID === filteredCategory[0].title
-    );
 
-    if (courseFiltering.length) {
-      setCourses(courseFiltering);
-      setTarget(filteredCategory[0]);
-      setIsLoading(false);
+  // Filters
+  const freeOnly = (inputs) => {
+    const {isActive, setIsActive, targetID} = inputs
+    if(isActive && targetID === "FREE_ONLY") {
+
     }
   };
 
-  
-  const freeOnly = (isActived) => {
-    if (isActived) {
-      dispatch(freeCoursesOnly())
-    }  }
-    
-    const presellOnly = (isActived) => {
-      console.log(isActived)
+  const boughtOnly = (inputs) => {
+    const {isActive, setIsActive, targetID} = inputs
+    console.log(isActive, targetID)
+  };
+
+  const presellOnly = (inputs) => {
+    const {isActive, setIsActive, targetID} = inputs
+    console.log(isActive, targetID)
+  };
+
+  const setBaseProducts = () => {
+    if (targetCategory && targetCategory.title) {
+      // Placeholder logic for setting products, adjust as needed
+      const filteredProducts = courses.filter(
+        (course) => course.categoryID === targetCategory.title
+      );
+      setProducts(filteredProducts);
     }
-    const boughtOnly = (isActived) => {
-    
-    }
+  };
 
   const filters = [
     {
-      id: crypto.randomUUID(),
+      id: "FREE_ONLY",
       title: "فقط دوره های رایگان",
-      action: freeOnly,
- 
+      handler: freeOnly,
     },
     {
-      id: crypto.randomUUID(),
-      title: "درحال پیش فروش",
-      action: presellOnly,
+      id: "BOUGHT_ONLY",
+      title: "فقط دوره های خریداری شده",
+      handler: boughtOnly,
     },
     {
-      id: crypto.randomUUID(),
-      title: "دوره های خریداری شده",
-      action: boughtOnly,
+      id: "PRESELL_ONLY",
+      title: "فقط دوره های پیشفروش",
+      handler: presellOnly,
     },
   ];
 
   useEffect(() => {
-    findTarget();
-  }, [categories, courses, category]);
 
-  //   IsLoading
+    let _CAT = _.filter(categories, (cat) => cat.name === category);
+    if (_CAT.length > 0) {
+      setTargetCategory(_CAT[0]);
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+    }
+  }, [category, categories]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setBaseProducts();
+    }
+  }, [targetCategory, isLoading]);
+
   if (isLoading) {
     return (
       <>
         <Header />
-        <main>Loading ..</main>
+        <main className="container mt-20">Loading ...</main>
       </>
     );
   }
 
-  if (target.title) {
+  if (isString(targetCategory.title)) {
     return (
-      <Provider
-        value={{
-          filters,
-        }}
-      >
+      <Provider value={{
+        filters,
+       resetHandler
+      }}>
         <Header />
-        <div className="w-full container mt-14 flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <span className="w-4 h-4 rounded-sm bg-yellow-500"></span>
-            <h3 className="text-3xl font-Dana-Demi">
-              {target.title && target.title}
-            </h3>
-          </div>
-          <div className="flex items-center gap-1 text-slate-500">
-            <span>{_courses.length}</span>
-            <span>دوره</span>
-          </div>
-        </div>
-        <main className="container mt-8">
-          <section className="flex  mt-10 items-center gap-5">
-            <Sidebar />
-          </section>
+        <main className="container mt-14 flex gap-5">
+          <Sidebar />
         </main>
       </Provider>
     );
-  } else {
-    return (
-      <>
-        <Header />
-        <main>Category not found ..</main>
-      </>
-    );
   }
+
+  return (
+    <>
+      <Header />
+      <main>No Category Found</main>
+    </>
+  );
 }

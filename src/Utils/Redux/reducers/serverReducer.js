@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
+import {  getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
 import { Bounce, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.min.css'
 
@@ -110,6 +110,8 @@ const serverReducer = createSlice({
             .addCase(getCategories.rejected, (state, action) => {
                 throw new Error("We can not get the categories")
             })
+
+            
     }
 })
 
