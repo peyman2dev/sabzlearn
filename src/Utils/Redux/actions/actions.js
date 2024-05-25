@@ -77,3 +77,11 @@ export const getArticles = createAsyncThunk(
         .then(data => data)
     }
 )
+export const getCategories = createAsyncThunk(
+    "serverReducer/getCategories", 
+    async () => {
+        return api.get('/category')
+        .then(res => res.data)
+        .then(data => data)
+    }
+)

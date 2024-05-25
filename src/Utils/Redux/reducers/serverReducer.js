@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getArticles, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
+import { getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
 import { Bounce, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.min.css'
 
@@ -14,6 +14,7 @@ const serverReducer = createSlice({
             isLoggedIn: false,
             userInfos: {}
         },
+        categories: [],
         isLoading: true
     },
 
@@ -97,11 +98,17 @@ const serverReducer = createSlice({
                     transition: Bounce,
                 })
             })
-            .addCase(getUsers.fulfilled, (state,action) => {
+            .addCase(getUsers.fulfilled, (state, action) => {
                 state.users = action.payload
             })
-            .addCase(getArticles.fulfilled, (state,action) => {
+            .addCase(getArticles.fulfilled, (state, action) => {
                 state.articles = action.payload
+            })
+            .addCase(getCategories.fulfilled, (state, action) => {
+                state.categories = action.payload
+            })
+            .addCase(getCategories.rejected, (state, action) => {
+                throw new Error("We can not get the categories")
             })
     }
 })
