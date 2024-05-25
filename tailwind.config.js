@@ -31,6 +31,7 @@ export default {
         "primary": "#4318FF",
         "dark": "#273142",
         "dark-sm": "#111C44",
+        "dark-md": "#242a38",
         "light": "#A3AED0"
       }
     },
