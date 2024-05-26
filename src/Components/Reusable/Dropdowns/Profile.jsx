@@ -20,7 +20,7 @@ export default function Profile() {
         className="w-12 h-12 rounded-full overflow-hidden"
       >
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRsQp3QfMCj9fdrpDdMhuC_UQgbwA6o6dZ25_J1Lp4lg&s"
+          src="/images/user.jpg"
           alt="پروفایل"
         />
       </button>
@@ -28,15 +28,15 @@ export default function Profile() {
         onClick={() => setShow(!show)}
         className={`${
           show ? "" : "opacity-0 invisible"
-        } duration-150 fixed top-0 right-0 w-full h-screen bg-black/30 backdrop-blur-sm`}
+        } duration-150 fixed z-10 top-0 right-0 w-full h-screen bg-black/30 backdrop-blur-sm`}
       ></div>
       <div
         className={`${
           show ? "" : "opacity-0 invisible"
-        } duration-150 w-[300px] z-[1] p-5 rounded-lg shadow-lg dark:bg-[#242a38] bg-white absolute left-0`}
+        } duration-150 w-[300px] z-[11] rounded-3xl p-5  shadow-lg dark:bg-[#242a38] bg-white absolute left-0`}
       >
         <header className="flex pb-3 items-center gap-3">
-          <span className="w-12 h-12 rounded-full bg-cover bg-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRsQp3QfMCj9fdrpDdMhuC_UQgbwA6o6dZ25_J1Lp4lg&s')]"></span>
+          <span className="w-12 h-12 rounded-full bg-cover bg-center bg-[url('/images/user.jpg')]"></span>
           <div>
             <p className="font-Dana-Regular">
               <strong>{user.name}</strong>

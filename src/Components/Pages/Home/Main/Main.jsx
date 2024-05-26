@@ -4,7 +4,7 @@ import LastCourses from "../LastCourses";
 
 export default function Main() {
   return (
-    <main>
+    <main className="child:relative">
       <Hero />
       <LastCourses />
     </main>

@@ -3,7 +3,7 @@ import _ from "lodash";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Loggedin from "../Loggedin/Loggedin";
+import Loggedin from "../Buttons/Loggedin";
 import ThemeButton from "../Buttons/ThemeButton";
 
 export default function Windows() {
@@ -25,7 +25,7 @@ export default function Windows() {
                       <ArrowDown2 className="transition-all duration-300 rotate-90 w-3 group-hover:rotate-0" />
                     </span>
                   </Link>
-                  <ul className="absolute border-t dark:border-t-white/10 space-y-3 p-4 opacity-0 invisible duration-300 group-hover:visible group-hover:opacity-100 w-[246px] rounded-lg bg-white dark:bg-[#2F3542] shadow-md ">
+                  <ul className="absolute z-[11] border-t dark:border-t-white/10 space-y-3 p-4 opacity-0 invisible duration-300 group-hover:visible group-hover:opacity-100 w-[246px] rounded-lg bg-white dark:bg-[#2F3542] shadow-md ">
                     {_.map(menu.submenus, (sub, index) => (
                       <li key={index}>
                         <Link

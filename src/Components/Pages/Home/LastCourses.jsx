@@ -3,6 +3,7 @@ import Title from "../../Reusable/Title/Title";
 import { useSelector } from "react-redux";
 import _ from "lodash";
 import Product from "../../Reusable/Cards/Product/Product";
+import Circle from "../../Reusable/Cards/Product/Circle";
 
 export default function LastCourses() {
     const {courses} = useSelector(state => state.server)
@@ -13,13 +14,14 @@ export default function LastCourses() {
       urlTitle={"مشاهده دوره ها"}
       url={"/courses/"}
        />
-       <main className="grid xl:grid-cols-4 gap-5 sm:grid-cols-2 grid-cols-1 mt-20 md:grid-cols-3">
+       <main className="grid relative z-[1] xl:grid-cols-4 gap-5 sm:grid-cols-2 grid-cols-1 mt-20 md:grid-cols-3">
         {
             _.map(courses, (course, index) => (
                 <Product {...course} key={index} />
             ))
         }
        </main>
+       <Circle classes={"bg-yellow-500 top-0"}/>
     </section>
   );
 }

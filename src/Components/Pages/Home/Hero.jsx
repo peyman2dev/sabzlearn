@@ -1,12 +1,13 @@
 import { Play } from "iconsax-react";
 import React from "react";
 import { useSelector } from "react-redux";
+import Circle from "../../Reusable/Cards/Product/Circle";
 
 export default function Hero() {
   const { isDark } = useSelector((state) => state.theme);
   return (
     <section className="my-[100px] flex-col-reverse child:w-full lg:justify-between gap-6 lg:flex-row text-center w-[95%] mx-auto lg:text-start justify-center xl:pr-[215px] flex items-center">
-      <div>
+      <div className="relative z-[1]">
         <h2 className="md:text-[2.5rem] lg:text-[3.5rem] text-zinc-800 dark:text-slate-100 tracking-tight text-4xl lg:leading-[64px] font-Dana-Black">
           آکادمی آموزش
           <br />
@@ -28,7 +29,7 @@ export default function Hero() {
           </button>
         </div>
       </div>
-      <div>
+      <div className="relative z-[1]">
         <img
           src={
             isDark
@@ -38,6 +39,8 @@ export default function Hero() {
           alt=""
         />
       </div>
+      <Circle classes={"bg-sky-500 top-0 right-0"}/>
+      <Circle classes={"bg-green-500 top-14 right-[180px]"}/>
     </section>
   );
 }

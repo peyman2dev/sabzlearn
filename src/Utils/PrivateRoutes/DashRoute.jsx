@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function DashRoute({ children }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,5 +28,11 @@ export default function DashRoute({ children }) {
     return "Loading...";
   }
 
-  return isAuthorized ? children : "Unauthorized";
+  return isAuthorized ? (
+    children
+  ) : (
+<div>
+  Not access
+</div>
+  );
 }

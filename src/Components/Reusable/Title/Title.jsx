@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Title({ title, desc, url, urlTitle, color }) {
   return (
-    <header className="flex flex-col sm:flex-row md:items-center gap-2 justify-between">
+    <header className="flex flex-col relative z-[1] sm:flex-row md:items-center gap-2 justify-between">
       <div>
         <div className="flex items-center gap-2">
             <div  className={`h-2 ${color}  w-5 rounded-sm`}></div>
