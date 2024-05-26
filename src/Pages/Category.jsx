@@ -9,10 +9,11 @@ import Product from "../Components/Reusable/Cards/Product/Product";
 import Sort from "../Components/Pages/Categories/Sort";
 
 export default function Category() {
+  const [activeSort, setActiveSort] = useState("ALL_COURSES");
   const [isLoading, setIsLoading] = useState(true);
   const { courses, categories } = useSelector((state) => state.server);
   const [targetCategory, setTargetCategory] = useState({});
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const { category } = useParams();
   const { Provider } = CategoriesProvider;
 
@@ -26,14 +27,33 @@ export default function Category() {
     }
   };
 
+  const sortHandler = () => {
+    let defaultProducts = [...products];
+    if (activeSort === "ALL_COURSES") {
+      setProducts(defaultProducts);
+    } else if (activeSort === "CHEAPEST") {
+      const sortedProducts = defaultProducts.sort((a, b) => a.price - b.price);
+      setProducts(sortedProducts);
+    } else if (activeSort === "EXPENSIVES") {
+      const sortedProducts = defaultProducts.sort((a, b) => b.price - a.price);
+      setProducts(sortedProducts);
+    }
+  };
+
   // Filters
   const freeOnly = (inputs) => {
     const { isActive, setIsActive, targetID } = inputs;
     if (isActive && targetID === "FREE_ONLY") {
-       setProducts(_.filter(courses, course => course.price == 0 && course.categoryID == targetCategory.title))
-      } else {
-        setBaseProducts()
-      }
+      setProducts(
+        _.filter(
+          courses,
+          (course) =>
+            course.price == 0 && course.categoryID == targetCategory.title
+        )
+      );
+    } else {
+      setBaseProducts();
+    }
   };
 
   const boughtOnly = (inputs) => {
@@ -64,6 +84,25 @@ export default function Category() {
     },
   ];
 
+  const sorts = [
+    {
+      id: "ALL_COURSES",
+      title: "همه دوره ها",
+    },
+    {
+      id: "CHEAPEST",
+      title: "ارزان ترین ها",
+    },
+    {
+      id: "EXPENSIVES",
+      title: "گران ترین ها",
+    },
+    {
+      id: "POPULARS",
+      title: "پرمخاطب ها",
+    },
+  ];
+
   useEffect(() => {
     let _CAT = _.filter(categories, (cat) => cat.name === category);
     if (_CAT.length > 0) {
@@ -80,6 +119,8 @@ export default function Category() {
     }
   }, [targetCategory, isLoading]);
 
+  useEffect(() => sortHandler(), [activeSort]);
+
   if (isLoading) {
     return (
       <>
@@ -94,39 +135,37 @@ export default function Category() {
       <Provider
         value={{
           filters,
+          sorts,
+          sort: {
+            activeSort,
+            setActiveSort,
+          },
         }}
       >
         <Header />
         <div className="flex container mt-12 items-center justify-between">
           <div className="flex items-center gap-1.5">
-        <span className="w-4 h-4 rounded-sm bg-yellow-500"></span>
-          <h3 className="text-2xl font-Dana-Bold">
-            {targetCategory && targetCategory.title}
-          </h3>
+            <span className="w-4 h-4 rounded-sm bg-yellow-500"></span>
+            <h3 className="text-2xl font-Dana-Bold">
+              {targetCategory && targetCategory.title}
+            </h3>
           </div>
           <span className="text-lg text-slate-500">
-            {products && products.length}
-            {" "}
-            دوره 
+            {products && products.length} دوره
           </span>
         </div>
         <main className="container mt-14 flex gap-5">
           <Sidebar />
-            <section className="w-full">
-              <Sort />
-              <div className="grid xl:grid-cols-3 gap-4">
-                {
-                  products.length ? 
-                  _.map(products, product => (
-                    <Product {...product}/>
-                  ))
-                  :
-                  <span className="text-lg">
-                    هیچ دوره ای یافت نشد :))
-                  </span>
-                }
-              </div>
-            </section>
+          <section className="w-full">
+            <Sort />
+            <div className="grid xl:grid-cols-3 gap-4">
+              {products.length ? (
+                _.map(products, (product, index) => <Product key={index} {...product} />)
+              ) : (
+                <span className="text-lg">هیچ دوره ای یافت نشد :))</span>
+              )}
+            </div>
+          </section>
         </main>
       </Provider>
     );

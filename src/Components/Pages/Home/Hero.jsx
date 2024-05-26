@@ -32,8 +32,8 @@ export default function Hero() {
         <img
           src={
             isDark
-              ? "../../../../public/images/svgs/hero-dark.svg"
-              : "../../../../public/images/svgs/hero-light.svg"
+              ? "/images/svgs/hero-dark.svg"
+              : "/images/svgs/hero-light.svg"
           }
           alt=""
         />
