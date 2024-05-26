@@ -12,6 +12,9 @@ export default function Windows() {
   return (
     <nav className="px-10 lg:flex lg:visible hidden invisible items-center justify-between">
       <ul className="flex items-center gap-5">
+        <Link to={'/'}>
+        <img  src="/images/logo.png" alt="Logo" className="w-14" />
+        </Link>
         {menus && menus.length
           ? _.map(menus, (menu, index) =>
               menu.submenus.length ? (
