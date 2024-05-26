@@ -10,7 +10,7 @@ export default function Windows() {
   const { menus } = useSelector((state) => state.server);
 
   return (
-    <nav className="px-10 flex items-center justify-between">
+    <nav className="px-10 lg:flex lg:visible hidden invisible items-center justify-between">
       <ul className="flex items-center gap-5">
         {menus && menus.length
           ? _.map(menus, (menu, index) =>

@@ -11,7 +11,8 @@ export default function Sort() {
   };
 
   return (
-    <div className="w-full mb-3.5 h-[68px] dark:bg-dark-md bg-white dark:border-t-white/10 dark:border-r-white/10 flex items-center gap-3 px-5 rounded-lg dark:border dark:border-white/5">
+    <>
+    <div className="w-full lg:visible lg mb-3.5 h-[68px] dark:bg-dark-md bg-white dark:border-t-white/10 dark:border-r-white/10 lg:flex hidden invisible items-center gap-3 px-5 rounded-lg dark:border dark:border-white/5">
       <div className="flex items-center dark:text-slate-300 text-zinc-600 gap-2">
         <span className="text-2xl">
           <PiSortAscending />
@@ -28,5 +29,7 @@ export default function Sort() {
         </button>
       ))}
     </div>
+
+    </>
   );
 }

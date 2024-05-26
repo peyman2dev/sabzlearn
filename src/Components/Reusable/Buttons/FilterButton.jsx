@@ -30,7 +30,7 @@ export default function FilterButton(props) {
     }, [path]);
 
     return (
-        <div onClick={clicked} className='select-none cursor-pointer w-full h-[68px] dark:bg-[#242a38] rounded-xl dark:border-white/5 dark:border-t-white/15 dark:border-r-white/10 bg-white dark:border flex items-center justify-between px-5'>
+        <div onClick={clicked} className='select-none cursor-pointer w-full h-[68px] lg:dark:bg-[#242a38] dark:rounded-xl dark:border-white/5 dark:border-t-white/15 dark:border-r-white/10 lg:bg-white lg:dark:border flex items-center justify-between px-5'>
             <span>
                 {props.title}
             </span>

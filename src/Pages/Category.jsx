@@ -9,6 +9,7 @@ import Product from "../Components/Reusable/Cards/Product/Product";
 import Sort from "../Components/Pages/Categories/Sort";
 
 export default function Category() {
+  const [searchQuery, setSearchQuery] = useState("")
   const [activeSort, setActiveSort] = useState("ALL_COURSES");
   const [isLoading, setIsLoading] = useState(true);
   const { courses, categories } = useSelector((state) => state.server);
@@ -17,9 +18,9 @@ export default function Category() {
   const { category } = useParams();
   const { Provider } = CategoriesProvider;
 
+  // Default Products Set (Setting for exact CATEGORY !)
   const setBaseProducts = () => {
     if (targetCategory && targetCategory.title) {
-      // Placeholder logic for setting products, adjust as needed
       const filteredProducts = courses.filter(
         (course) => course.categoryID === targetCategory.title
       );
@@ -27,6 +28,7 @@ export default function Category() {
     }
   };
 
+  // Sort Handler
   const sortHandler = () => {
     let defaultProducts = [...products];
     if (activeSort === "ALL_COURSES") {
@@ -40,6 +42,20 @@ export default function Category() {
     }
   };
 
+  const searchHandler = (val) => {
+    let defaultProducts = products;
+  
+    if (val.length) { 
+      const filteredProducts = _.filter(defaultProducts, (product) => 
+        product.name.toLowerCase().includes(val.toLowerCase()) || product.shortName.toLowerCase().includes(val.toLowerCase())
+      );
+      setProducts(filteredProducts);
+    } else {
+      setBaseProducts(); 
+    }
+    
+  };
+  
   // Filters
   const freeOnly = (inputs) => {
     const { isActive, setIsActive, targetID } = inputs;
@@ -58,12 +74,10 @@ export default function Category() {
 
   const boughtOnly = (inputs) => {
     const { isActive, setIsActive, targetID } = inputs;
-    console.log(isActive, targetID);
   };
 
   const presellOnly = (inputs) => {
     const { isActive, setIsActive, targetID } = inputs;
-    console.log(isActive, targetID);
   };
 
   const filters = [
@@ -140,10 +154,11 @@ export default function Category() {
             activeSort,
             setActiveSort,
           },
+          searchHandler
         }}
       >
         <Header />
-        <div className="flex container mt-12 items-center justify-between">
+        <div className="flex container flex-col  mt-12 justify-center lg:flex-row items-center lg:justify-between">
           <div className="flex items-center gap-1.5">
             <span className="w-4 h-4 rounded-sm bg-yellow-500"></span>
             <h3 className="text-2xl font-Dana-Bold">
@@ -154,11 +169,11 @@ export default function Category() {
             {products && products.length} دوره
           </span>
         </div>
-        <main className="container mt-14 flex gap-5">
+        <main className="container w-[90%] md:w-full mt-14 space-y-4 lg:space-y-0 lg:flex gap-5">
           <Sidebar />
           <section className="w-full">
             <Sort />
-            <div className="grid xl:grid-cols-3 gap-4">
+            <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-4">
               {products.length ? (
                 _.map(products, (product, index) => <Product key={index} {...product} />)
               ) : (
