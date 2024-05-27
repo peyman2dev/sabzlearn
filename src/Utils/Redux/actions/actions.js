@@ -86,3 +86,16 @@ export const getCategories = createAsyncThunk(
     }
 )
 
+
+export const courseRemove = createAsyncThunk(
+    "serverReducer/courseRemove",
+    async (courseID) => {
+        return api.delete(`/courses/${courseID}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(res => res.data)
+        .then(data => data)
+    }
+)

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {  getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
+import {  courseRemove, getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
 import { Bounce, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.min.css'
 
@@ -110,7 +110,26 @@ const serverReducer = createSlice({
             .addCase(getCategories.rejected, (state, action) => {
                 throw new Error("We can not get the categories")
             })
-
+            .addCase(courseRemove.fulfilled, (state,action) => {
+                toast.success("دوره با موفقیت حذف گردید !", {
+                    autoClose: 2500,
+                    position: "top-left",
+                    className: "font-Dana-Regular",
+                    closeOnClick: true,
+                    transition: Bounce,
+                    onClose: () => window.location.reload()
+                })
+            })
+            .addCase(courseRemove.rejected, (state,action) => {
+                toast.error("عملیات با خطا مواجه شد", {
+                    autoClose: 2500,
+                    position: "top-left",
+                    className: "font-Dana-Regular",
+                    closeOnClick: true,
+                    transition: Bounce,
+                })
+                throw new Error(action)
+            })
             
     }
 })

@@ -111,6 +111,12 @@ button.button.secondary {
 }
 
 
+button.button.danger {
+  @apply bg-red-600 text-white
+}
+
+
+
 div.card-component.information-card {
   @apply h-[124px] bg-white w-full p-4 first:rounded-r-3xl border-x first:border-r-transparent last:border-l-transparent last:rounded-l-3xl
 }
