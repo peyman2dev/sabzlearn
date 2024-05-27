@@ -1,11 +1,13 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
+import React, { useContext, useEffect } from 'react'
+import DashboardContext from '../../../../../Utils/Contexts/DashboardContext'
 
 export default function Courses() {
-  return (
-    <>
-    <Helmet title='داشبورد | مدیریت دوره ها'/>
+  const {routing} = useContext(DashboardContext)
 
-    </>
+  useEffect(() => {
+    routing.setRouteTitle("دوره ها")
+  }, [])
+  return (
+    <div>Courses</div>
   )
 }

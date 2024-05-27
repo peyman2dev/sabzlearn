@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-export default function Profile() {
+export default function Profile({customStyle}) {
   const user = useSelector((state) => state.server.user.userInfos);
   const [show, setShow] = useState(false);
   return (
@@ -33,7 +33,7 @@ export default function Profile() {
       <div
         className={`${
           show ? "" : "opacity-0 invisible"
-        } duration-150 w-[300px] z-[11] rounded-3xl p-5  shadow-lg dark:bg-[#242a38] bg-white absolute left-0`}
+        } duration-150 w-[270px] ${customStyle ? customStyle : null} z-[11] rounded-3xl p-5  shadow-lg dark:bg-[#242a38] bg-white absolute left-0`}
       >
         <header className="flex pb-3 items-center gap-3">
           <span className="w-12 h-12 rounded-full bg-cover bg-center bg-[url('/images/user.jpg')]"></span>

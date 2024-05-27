@@ -88,3 +88,29 @@ button {
 .Toastify {
   @apply font-Dana-Regular;
 }
+
+button.button {
+  @apply flex items-center gap-1 rounded-md px-4 h-9 duration-150 hover:bg-opacity-70 transition-all 
+}
+
+button.button.primary {
+  @apply bg-green-500 text-white
+}
+
+button.button.info {
+  @apply bg-yellow-500 text-white
+}
+
+
+button.button.light {
+  @apply bg-sky-500 text-white
+}
+
+button.button.secondary {
+  @apply bg-[#272727] text-white
+}
+
+
+div.card-component.information-card {
+  @apply h-[124px] bg-white w-full p-4 first:rounded-r-3xl border-x first:border-r-transparent last:border-l-transparent last:rounded-l-3xl
+}

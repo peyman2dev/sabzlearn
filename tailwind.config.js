@@ -38,9 +38,11 @@ export default {
   },
   plugins: [
     // Adding Variant for & > *, & > *:hover
+    require('daisyui'),
     function ({ addVariant }) {
       addVariant("child", "& > *")
       addVariant("child-hover", "& > *:hover")
     }],
+
 }
 

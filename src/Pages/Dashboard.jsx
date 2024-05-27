@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Dashboard/Pages/Home";
 import Courses from "../Components/Pages/Dashboard/Pages/Courses/Courses";
@@ -6,15 +6,18 @@ import Articles from "../Components/Pages/Dashboard/Pages/Articles";
 import Menus from "../Components/Pages/Dashboard/Pages/Menus";
 import Users from "../Components/Pages/Dashboard/Pages/Users";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories";
+import Create from "../Components/Pages/Dashboard/Pages/Courses/Create";
 import Comments from "../Components/Pages/Dashboard/Pages/Comments";
 import { Helmet } from "react-helmet";
 import _ from "lodash";
-import Sidebar from "../Components/Pages/Dashboard/Components/Sidebar";
-import Create from "../Components/Pages/Dashboard/Pages/Courses/Create";
-import Header from "../Components/Pages/Dashboard/Components/Header";
 import Search from "../Components/Pages/Dashboard/Pages/Search";
+import Sidebar from "../Components/Pages/Dashboard/Components/Sidebar/Sidebar";
+import DashboardContext from "../Utils/Contexts/DashboardContext";
+import Header from "../Components/Pages/Dashboard/Components/Header/Header";
 
 export default function Dashboard() {
+  const { Provider } = DashboardContext;
+  const [routeTitle, setRouteTitle] = useState("")
   const routes = [
     {
       id: crypto.randomUUID(),
@@ -64,8 +67,13 @@ export default function Dashboard() {
   ];
 
   return (
-    <>
-      <main className="flex  dark:text-white bg-[#F4F7FE] text-[#2B3674] dark:bg-[#0B1437]">
+    <Provider value={{
+      routing: {
+        routeTitle,
+        setRouteTitle
+      }
+    }}>
+      <main className="flex  bg-[#f6f7fb] min-h-screen text-[#3a3a3a]">
         <Sidebar />
         <section className="w-full">
           <Header />
@@ -78,6 +86,6 @@ export default function Dashboard() {
           </section>
         </section>
       </main>
-    </>
+    </Provider>
   );
 }
