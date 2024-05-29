@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 const Button = ({ icon, title, variant, action }) => {
   return (
-    <button onClick={() => action()} className={`button active-animation  ${variant}`}>
+    <button onClick={action} className={`button pt-0.5 active-animation ${variant}`}>
       <span>{title}</span>
       {icon && <span>{icon}</span>}
     </button>
@@ -15,10 +15,23 @@ const Button = ({ icon, title, variant, action }) => {
 };
 
 Button.propTypes = {
+  icon: PropTypes.node,
   title: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(
-    "primary" | "secondary" | "light" | "info" | "danger" | "loading"
-  ).isRequired,
+  variant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "light",
+    "info",
+    "danger",
+    "loading"
+  ]).isRequired,
+  action: PropTypes.func.isRequired,
+};
+
+Button.defaultProps = {
+  icon: null,
+  action: () => {},
+  variant: "primary",
 };
 
 export default Button;

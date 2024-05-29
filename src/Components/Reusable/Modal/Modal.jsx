@@ -1,35 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
+import _ from "lodash";
+
 /**
- * @param { true | false} param1
- * @param {"success" | "info" | "error"} param0
+ * @param {"large" |"small"} param0.size
  */
 
-function Modal({children,show, setShow}) {
+function Modal({ modalShow: { show, setShow }, size, children }) {
   return (
-    <div
+    <section
       onClick={() => setShow(!show)}
-      className={`w-full flex items-center select-none justify-center fixed top-0 duration-150 bg-black/50 backdrop-blur-sm right-0 h-screen ${
+      className={`w-full h-screen top-0 right-0 flex items-center justify-center duration-150 bg-black/30 fixed backdrop-blur-sm ${
         show ? "" : "opacity-0 invisible"
-      } `}
+      }`}
     >
-        <div onClick={(event) => event.stopPropagation()} className="w-[500px] bg-white rounded-2xl">
-        {children}
-        </div>
-    </div>
+      <div
+      onClick={event => event.stopPropagation()}
+        className={`${
+          size === "large"
+            ? "w-full h-screen sm:h-auto sm:w-[46%] p-6 bg-white rounded-md"
+            : "lg:w-[550px]"
+        }`}
+      >
+        {
+          children
+        }
+      </div>
+    </section>
   );
 }
 
 Modal.prototype = {
-  icon: PropTypes.oneOf("success" | "info" | "error").isRequired,
-};
+  size: PropTypes.oneOf(["large" |"small"]).isRequired
+}
 
 export default Modal;
-
-
-// <header className="py-4 px-5 flex items-center justify-between">
-// <p className="text-lg text-slate-800 font-Dana-Demi">حذف دوره</p>
-// <button onClick={() => setShow(!show)} className="text-slate-500">
-//   <Close />
-// </button>
-// </header>
