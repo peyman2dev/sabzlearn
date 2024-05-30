@@ -25,9 +25,14 @@ export default function Courses() {
   const [sessionTab, setSessionTab] = useState(null);
   const [target, setTarget] = useState({});
   const [show, setShow] = useState(false);
-  const [sessionShow, setSessionShow] = useState(false);
   const { Provider } = CoursesContext;
+  
 
+  // Show states
+  const [sessionShow, setSessionShow] = useState(false);
+  const [sessionRmShow, setSessionRmShow] = useState(false)
+
+  
   useEffect(() => {
     routing.setRouteTitle("دوره ها");
   }, []);
@@ -46,6 +51,8 @@ export default function Courses() {
           setSessionTab,
           sessionShow,
           setSessionShow,
+          sessionRmShow,
+          setSessionRmShow
         },
         target,
         setTarget,

@@ -114,3 +114,16 @@ export const createSession = createAsyncThunk(
             .then(data => data)
     }
 )
+
+export const sessionRemove = createAsyncThunk(
+    "serverReducer/sessionRemove",
+    async (sessionID) => {
+        return api.delete(`/courses/sessions/${sessionID}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(r => r.data)
+            .then(data => data)
+    }
+)

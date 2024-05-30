@@ -15,23 +15,21 @@ function Modal({ modalShow: { show, setShow }, size, children }) {
       }`}
     >
       <div
-      onClick={event => event.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
         className={`${
           size === "large"
-            ? "w-full min-h-screen sm:h-auto sm:min-h-max  sm:w-[56%] p-6 bg-white rounded-md"
+            ? "w-full min-h-screen sm:h-auto sm:min-h-max  sm:w-[56%]"
             : "lg:w-[550px]"
-        }`}
+        }  p-5 bg-white rounded-md`}
       >
-        {
-          children
-        }
+        {children}
       </div>
     </section>
   );
 }
 
 Modal.prototype = {
-  size: PropTypes.oneOf(["large" |"small"]).isRequired
-}
+  size: PropTypes.oneOf(["large" | "small"]).isRequired,
+};
 
 export default Modal;

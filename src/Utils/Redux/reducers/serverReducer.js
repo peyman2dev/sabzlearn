@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { courseRemove, createSession, getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
+import { courseRemove, createSession, getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers, sessionRemove } from "../actions/actions.js";
 import { Bounce, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.min.css'
+import { redirect } from "react-router-dom";
 
 const serverReducer = createSlice({
     name: "serverReducer",
@@ -129,15 +130,35 @@ const serverReducer = createSlice({
             .addCase(createSession.fulfilled, (state, action) => {
                 console.log(action.payload)
                 toast.success("جلسه با موفقیت ایجاد گردید :)", {
-                    autoClose: 2500,
+                    autoClose: 1500,
                     position: "top-left",
                     closeOnClick: true,
                     transition: Bounce,
+                    onClose: () => window.location.reload()
                 })
             })
             .addCase(createSession.rejected, (state, action) => {
                 toast.error("عملیات با خطا مواجه شد", {
                     autoClose: 2500,
+                    position: "top-left",
+                    closeOnClick: true,
+                    transition: Bounce,
+                })
+                console.log(action)
+            })
+            .addCase(sessionRemove.fulfilled, (state, action) => {
+                console.log(action.payload)
+                toast.success("جلسه با موفقیت  حذف گردید :)", {
+                    autoClose: 1000,
+                    position: "top-left",
+                    closeOnClick: true,
+                    transition: Bounce,
+                    onClose: () => window.location.reload()
+                })
+            })
+            .addCase(sessionRemove.rejected, (state, action) => {
+                toast.error("عملیات با خطا مواجه شد", {
+                    autoClose: 1000,
                     position: "top-left",
                     closeOnClick: true,
                     transition: Bounce,

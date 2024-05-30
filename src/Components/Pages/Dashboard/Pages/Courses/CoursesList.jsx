@@ -62,8 +62,7 @@ export default function CoursesList() {
                       context.session.setSessionShow(!context.session.sessionShow)
                       context.setTarget(course)
                       context.session.setSessionTab("CREATE_SESSION")
-                      console.log(context)
-                    }}
+                      }}
                     className="font-medium px-4 py-1.5 rounded-md bg-opacity-5 bg-sky-500 text-sky-600  duration-150 hover:bg-opacity-15"
                   >
                     مدیریت جلسات
