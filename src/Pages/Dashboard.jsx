@@ -6,17 +6,17 @@ import Articles from "../Components/Pages/Dashboard/Pages/Articles";
 import Menus from "../Components/Pages/Dashboard/Pages/Menus";
 import Users from "../Components/Pages/Dashboard/Pages/Users";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories";
-import Create from "../Components/Pages/Dashboard/Pages/Courses/Create";
 import Comments from "../Components/Pages/Dashboard/Pages/Comments";
 import { Helmet } from "react-helmet";
 import _ from "lodash";
 import Search from "../Components/Pages/Dashboard/Pages/Search";
 import Sidebar from "../Components/Pages/Dashboard/Components/Sidebar/Sidebar";
-import DashboardContext from "../Utils/Contexts/DashboardContext";
+import DashboardContext from "../Utils/Contexts/Dashboard/DashboardContext";
 import Header from "../Components/Pages/Dashboard/Components/Header/Header";
 
 export default function Dashboard() {
   const { Provider } = DashboardContext;
+  const [coursesContext, setCoursesContext] = useState({})
   const [routeTitle, setRouteTitle] = useState("")
   const routes = [
     {
@@ -29,11 +29,7 @@ export default function Dashboard() {
       path: "courses",
       element: <Courses />,
     },
-    {
-      id: crypto.randomUUID(),
-      path: "courses/create",
-      element: <Create />,
-    },
+
     {
       id: crypto.randomUUID(),
       path: "articles",
@@ -71,7 +67,9 @@ export default function Dashboard() {
       routing: {
         routeTitle,
         setRouteTitle
-      }
+      },
+      coursesContext,
+      setCoursesContext
     }}>
       <main className="flex  bg-[#f6f7fb] min-h-screen text-[#3a3a3a]">
         <Sidebar />

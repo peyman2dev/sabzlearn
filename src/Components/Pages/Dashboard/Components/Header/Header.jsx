@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import DashboardContext from '../../../../../Utils/Contexts/DashboardContext'
+import DashboardContext from '../../../../../Utils/Contexts/Dashboard/DashboardContext'
 import Profile from '../../../../Reusable/Dropdowns/Profile'
 
 export default function Header() {

@@ -95,7 +95,22 @@ export const courseRemove = createAsyncThunk(
                 Authorization: `Bearer ${token}`
             }
         })
-        .then(res => res.data)
-        .then(data => data)
+            .then(res => res.data)
+            .then(data => data)
+    }
+)
+
+export const createSession = createAsyncThunk(
+    "serverReducer/createSession",
+    async ({
+        data,
+        productID
+    }) => {
+        return api.post(`/courses/${productID}/sessions`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }).then(r => r.data)
+            .then(data => data)
     }
 )

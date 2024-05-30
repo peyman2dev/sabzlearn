@@ -54,7 +54,7 @@ export default function Sidebar() {
     },
   ];
   return (
-    <aside className="min-h-screen flex flex-col justify-between p-4 min-w-[240px] bg-white">
+    <aside className="min-h-screen lg:visible  hidden invisible lg:flex flex-col justify-between p-4 min-w-[240px] bg-white">
       <div>
       <header className="mt-3">
         <Link className="text-xl flex items-center justify-center gap-2 font-Dana-Black">

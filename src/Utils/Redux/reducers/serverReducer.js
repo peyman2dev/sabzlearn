@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {  courseRemove, getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
+import { courseRemove, createSession, getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers } from "../actions/actions.js";
 import { Bounce, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.min.css'
 
@@ -44,7 +44,6 @@ const serverReducer = createSlice({
                     autoClose: 2500,
                     position: "top-left",
                     progress: undefined,
-                    className: "font-Dana-Regular",
                     closeOnClick: true,
                     theme: localTheme,
                     onClose: () => {
@@ -59,7 +58,7 @@ const serverReducer = createSlice({
                     autoClose: 2500,
                     position: "top-left",
                     progress: undefined,
-                    className: "font-Dana-Regular",
+
                     closeOnClick: true,
                     theme: localTheme,
                     transition: Bounce,
@@ -77,7 +76,7 @@ const serverReducer = createSlice({
                     autoClose: 2500,
                     position: "top-left",
                     progress: undefined,
-                    className: "font-Dana-Regular",
+
                     closeOnClick: true,
                     theme: localTheme,
                     transition: Bounce,
@@ -92,7 +91,6 @@ const serverReducer = createSlice({
                     autoClose: 2500,
                     position: "top-left",
                     progress: undefined,
-                    className: "font-Dana-Regular",
                     closeOnClick: true,
                     theme: localTheme,
                     transition: Bounce,
@@ -110,27 +108,42 @@ const serverReducer = createSlice({
             .addCase(getCategories.rejected, (state, action) => {
                 throw new Error("We can not get the categories")
             })
-            .addCase(courseRemove.fulfilled, (state,action) => {
+            .addCase(courseRemove.fulfilled, (state, action) => {
                 toast.success("دوره با موفقیت حذف گردید !", {
                     autoClose: 2500,
                     position: "top-left",
-                    className: "font-Dana-Regular",
                     closeOnClick: true,
                     transition: Bounce,
                     onClose: () => window.location.reload()
                 })
             })
-            .addCase(courseRemove.rejected, (state,action) => {
+            .addCase(courseRemove.rejected, (state, action) => {
                 toast.error("عملیات با خطا مواجه شد", {
                     autoClose: 2500,
                     position: "top-left",
-                    className: "font-Dana-Regular",
                     closeOnClick: true,
                     transition: Bounce,
                 })
                 throw new Error(action)
             })
-            
+            .addCase(createSession.fulfilled, (state, action) => {
+                console.log(action.payload)
+                toast.success("جلسه با موفقیت ایجاد گردید :)", {
+                    autoClose: 2500,
+                    position: "top-left",
+                    closeOnClick: true,
+                    transition: Bounce,
+                })
+            })
+            .addCase(createSession.rejected, (state, action) => {
+                toast.error("عملیات با خطا مواجه شد", {
+                    autoClose: 2500,
+                    position: "top-left",
+                    closeOnClick: true,
+                    transition: Bounce,
+                })
+                console.log(action)
+            })
     }
 })
 

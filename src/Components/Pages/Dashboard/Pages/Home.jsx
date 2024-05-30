@@ -17,7 +17,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import DashboardContext from "../../../../Utils/Contexts/DashboardContext";
+import DashboardContext from "../../../../Utils/Contexts/Dashboard/DashboardContext";
 
 export default function Home() {
   const {routing} = useContext(DashboardContext)

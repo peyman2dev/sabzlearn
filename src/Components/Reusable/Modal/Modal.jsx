@@ -10,7 +10,7 @@ function Modal({ modalShow: { show, setShow }, size, children }) {
   return (
     <section
       onClick={() => setShow(!show)}
-      className={`w-full h-screen top-0 right-0 flex items-center justify-center duration-150 bg-black/30 fixed backdrop-blur-sm ${
+      className={`w-full h-screen top-0 overflow-scroll md:overflow-hidden  right-0 flex items-center justify-center duration-150 bg-black/30 fixed backdrop-blur-sm ${
         show ? "" : "opacity-0 invisible"
       }`}
     >
@@ -18,7 +18,7 @@ function Modal({ modalShow: { show, setShow }, size, children }) {
       onClick={event => event.stopPropagation()}
         className={`${
           size === "large"
-            ? "w-full h-screen sm:h-auto sm:w-[46%] p-6 bg-white rounded-md"
+            ? "w-full min-h-screen sm:h-auto sm:min-h-max  sm:w-[56%] p-6 bg-white rounded-md"
             : "lg:w-[550px]"
         }`}
       >
