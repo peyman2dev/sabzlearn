@@ -11,7 +11,6 @@ router
   .get(controller.getAll)
   .post(authenticatedMiddleware, isAdminMiddleware, controller.create);
 
-  router.get('/all', controller.getAllPanelMenus)
   router.get('/topbar', controller.getAllTopbarLinks)
 
 module.exports = router;

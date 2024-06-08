@@ -1,6 +1,10 @@
+const { nextui } = require('@nextui-org/theme');
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/components/(button|modal|ripple|spinner).js"
+  ],
   darkMode: "class",
   theme: {
     screens: {
@@ -36,13 +40,11 @@ export default {
       }
     },
   },
-  plugins: [
-    // Adding Variant for & > *, & > *:hover
-    require('daisyui'),
+  plugins: [// Adding Variant for & > *, & > *:hover
     function ({ addVariant }) {
       addVariant("child", "& > *")
       addVariant("child-hover", "& > *:hover")
-    }],
+    }, nextui()],
 
 }
 

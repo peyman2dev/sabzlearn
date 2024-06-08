@@ -1,4 +1,4 @@
-const menuModel = require("../../models/menu");
+const menuModel = require('../../models/menu');
 
 exports.getAll = async (req, res) => {
   const menus = await menuModel.find().lean();
@@ -28,18 +28,13 @@ exports.create = async (req, res) => {
 
 exports.getAllTopbarLinks = async (req, res) => {
   const menus = await menuModel.find().lean();
-  let topbarLinks = [];
+  let topbarLinks = []
 
-  for (const menu of menus) {
-    if (menu.parent) {
-      topbarLinks.push(menu);
+  for(const menu of menus) {
+    if(menu.parent) {
+      topbarLinks.push(menu)
     }
   }
 
-  res.json(topbarLinks);
-};
-
-exports.getAllPanelMenus = async (req, res) => {
-  const menus = await menuModel.find({}).populate('parent').lean();
-  res.json(menus)
-};
+  res.json(topbarLinks)
+}

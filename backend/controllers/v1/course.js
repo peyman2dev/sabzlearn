@@ -12,6 +12,7 @@ exports.create = async (req, res) => {
     name,
     description,
     shortName,
+    creator: req.user._id,
     categoryID,
     price,
     isComplete: 0,
@@ -161,15 +162,9 @@ exports.getSessionInfo = async (req, res) => {
   const course = await courseModel
     .findOne({ shortName: req.params.shortName })
     .lean();
-
   const session = await sessionModel.findOne({
     course: course._id,
     _id: req.params.sessionID,
   });
-
-  const sessions = await sessionModel.find({ course: course._id });
-
-  console.log(sessions);
-
-  res.json({ sessions, session });
+  res.json(session);
 };

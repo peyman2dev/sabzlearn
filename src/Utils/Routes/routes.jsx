@@ -2,7 +2,7 @@ import Auth from "../../Pages/Auth";
 import Category from "../../Pages/Category";
 import Dashboard from "../../Pages/Dashboard";
 import Home from "../../Pages/Home";
-import DashRoute from "../PrivateRoutes/DashRoute";
+import AdminRoute from "../Private/AdminRoute";
 
 const routes = [
   {
@@ -15,7 +15,11 @@ const routes = [
   },
   {
     path: "/dashboard/*",
-    element: <DashRoute children={<Dashboard />}/>
+    element: (
+      <AdminRoute>
+        <Dashboard />
+      </AdminRoute>
+    ),
   },
   {
     path: "/category/:category",

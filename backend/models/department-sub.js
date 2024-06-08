@@ -1,23 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
-    },
-    href: {
-      type: String,
-      required: true,
+      ref: "Course",
     },
     parent: {
       type: mongoose.Types.ObjectId,
-      ref: 'Menu',
+      ref: "User",
     },
   },
   { timestamps: true }
 );
 
-const model = mongoose.model('Menu', schema);
+const model = mongoose.model("DepartmentSub", schema);
 
 module.exports = model;
