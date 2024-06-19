@@ -127,3 +127,12 @@ export const sessionRemove = createAsyncThunk(
             .then(data => data)
     }
 )
+
+
+export const removeCourse = createAsyncThunk(
+    "serverReducer/removeCourse",
+    async (courseID) => {
+        return api.delete(`/courses/${courseID}`)
+            .then(r => r.data).then(d => d)
+    }
+)

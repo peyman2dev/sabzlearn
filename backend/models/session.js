@@ -12,7 +12,7 @@ const schema = new mongoose.Schema(
     },
     video: {
       type: String,
-      required: true,
+      required: false,
     },
     free: {
       type: Number,

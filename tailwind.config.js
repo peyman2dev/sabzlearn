@@ -32,12 +32,18 @@ export default {
 
       },
       colors: {
-        "primary": "#4318FF",
-        "dark": "#273142",
-        "dark-sm": "#111C44",
-        "dark-md": "#242a38",
-        "light": "#A3AED0"
+        "dark-900": "#121212",
+        "dark-800": "#1a1a1a",
+        "dark-700": "#222222",
+        "dark-600": "#2a2a2a",
+        "dark-500": "#333333",
+        "dark-400": "#4a4a4a",
+        "dark-300": "#666666",
+        "dark-200": "#888888",
+        "dark-100": "#aaaaaa"
       }
+
+
     },
   },
   plugins: [// Adding Variant for & > *, & > *:hover

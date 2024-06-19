@@ -1,26 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Linked from "./Linked";
 import { Profile2User, Star1, User } from "iconsax-react";
 
 export default function Product(props) {
   const shortURL = `/course/${props.shortName}`;
   return (
-    <article className="bg-white dark:bg-[#242a38] rounded-xl overflow-hidden w-full">
+    <article className="bg-white dark:bg-dark-800 rounded-xl overflow-hidden w-full">
       <header className="h-[167px] rounded-xl overflow-hidden ">
-        <Linked
+        <Link
           url={shortURL}
           children={
             <img
-              src={props.cover}
-              alt={props.name}
-              className="w-full h-full object-cover"
-            />
+            src={props.cover}
+            alt={props.name}
+            className="w-full h-full object-cover"
+          />
           }
         />
       </header>
       <main className="border-b border-white/5 mx-5 py-3">
-        <Linked
+        <Link
           url={shortURL}
           children={
             <h3 className="font-Dana-Demi h-[55px] text-lg text-slate-800 dark:text-white line-clamp-2">

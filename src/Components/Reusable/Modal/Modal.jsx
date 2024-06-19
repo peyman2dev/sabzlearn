@@ -1,35 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
-import _ from "lodash";
+import ModalContext from "../../../Utils/Contexts/ModalContext";
 
-/**
- * @param {"large" |"small"} param0.size
- */
-
-function Modal({ modalShow: { show, setShow }, size, children }) {
+const Modal = ({children}) => {
+  const {isOpen, toggleModal} = React.useContext(ModalContext)
+  
   return (
     <section
-      onClick={() => setShow(!show)}
-      className={`w-full h-screen top-0 overflow-scroll md:overflow-hidden  right-0 flex items-center justify-center duration-150 bg-black/30 fixed backdrop-blur-sm ${
-        show ? "" : "opacity-0 invisible"
+    onClick={toggleModal}
+      className={`w-full h-screen fixed top-0 right-0 duration-150 flex items-center justify-center bg-black/30 backdrop-blur-sm  ${
+        isOpen ? "" : "invisible opacity-0"
       }`}
     >
-      <div
-        onClick={(event) => event.stopPropagation()}
-        className={`${
-          size === "large"
-            ? "w-full min-h-screen sm:h-auto sm:min-h-max  sm:w-[56%]"
-            : "lg:w-[550px]"
-        }  p-5 bg-white rounded-md`}
-      >
+      <div onClick={(event) => event.stopPropagation()} className="w-[462px] border dark:border-white/5 overflow-hidden rounded-md dark:bg-[#181717]">
         {children}
       </div>
     </section>
   );
-}
-
-Modal.prototype = {
-  size: PropTypes.oneOf(["large" | "small"]).isRequired,
 };
-
 export default Modal;

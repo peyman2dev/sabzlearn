@@ -16,14 +16,22 @@ router
   //     isAdminMiddleware,
   //     courseController.create
   //   )
-  .get(isAuthenticated, isAdminMiddleware, userController.getAll);
+  .get(isAuthenticated, isAdminMiddleware, userController.getAll)
+  .put(isAuthenticated, userController.updateUser);
+
+router
+  .route("/role")
+  .put(isAuthenticated, isAdminMiddleware, userController.changeUserRole);
 
 router
   .route("/:id")
-  .delete(isAuthenticated, isAdminMiddleware, userController.removeUser);
+  .delete(isAuthenticated, isAdminMiddleware, userController.removeUser)
+  .put(isAuthenticated, isAdminMiddleware, userController.editUser);
 
 router
   .route("/ban/:id")
   .put(isAuthenticated, isAdminMiddleware, userController.banUser);
+
+router.route("/courses").get(isAuthenticated, userController.getUserCourses);
 
 module.exports = router;

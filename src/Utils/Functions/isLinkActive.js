@@ -1,3 +1,3 @@
 export default function isLinkActive() {
-    return (({ isActive }) => isActive ? "flex items-center gap-2 px-3 py-2 text-[#F8F8F9] bg-[#1a1a1a] rounded-lg" : "flex items-center gap-2 px-3 py-1.5")
+    return (({ isActive }) => isActive ? 'relative flex h-10 gap-2 before:absolute before:w-1  before:h-full before:left-0 pr-5 before:dark:bg-[#7551FF] before:top-0 before:content-[""] before:rounded-md' : "flex items-center gap-2 pr-5")
 }

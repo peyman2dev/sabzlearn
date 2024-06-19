@@ -1,7 +1,9 @@
 const userModel = require("../../models/user");
 const banUserModel = require("../../models/ban-phone");
+const courseUserModel = require("../../models/course-user");
+const bcrypt = require("bcrypt");
 
-// exports.create = async (req, res) => {
+// exports.create = async (req, res, next) => {
 //   const { name, description, shortName, categoryID, price } = req.body;
 
 //   const course = await courseModel.create({
@@ -23,113 +25,152 @@ const banUserModel = require("../../models/ban-phone");
 //   return res.status(201).json(populatedCourse);
 // };
 
-exports.getAll = async (req, res) => {
-  const users = await userModel.find();
+exports.getAll = async (req, res, next) => {
+  try {
+    const users = await userModel.find();
 
-  const allUsers = [];
-  for (const userItem of users) {
-    if (userItem.role !== "ADMIN") {
-      allUsers.push(userItem);
+    return res.json(users);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.editUser = async (req, res, next) => {
+  try {
+    const { name, username, email, password, phone, role } = req.body;
+    const { id } = req.params;
+    await userModel.editUserValidation({ ...req.body, id }).catch((err) => {
+      err.statusCode = 400;
+      throw err;
+    });
+
+    const hashedPassword = password
+      ? await bcrypt.hash(password, 12)
+      : undefined;
+
+    const updatedUser = await userModel.findByIdAndUpdate(
+      id,
+      {
+        name,
+        username,
+        email,
+        password: hashedPassword,
+        phone,
+        role,
+      },
+      { new: true }
+    );
+
+    return res.json({ user: updatedUser });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.removeUser = async (req, res, next) => {
+  try {
+    await userModel.removeUserValidation(req.params).catch((err) => {
+      err.statusCode = 400;
+      throw err;
+    });
+
+    const deletedUser = await userModel.findOneAndRemove({
+      _id: req.params.id,
+    });
+
+    if (!deletedUser) {
+      return res.status(404).json("There is not user");
     }
+
+    return res.status(200).json("User Deleted Successfully");
+  } catch (error) {
+    next(error);
   }
-  return res.json(allUsers);
 };
 
-exports.removeUser = async (req, res) => {
-  const deletedUser = await userModel.findOneAndRemove({ _id: req.params.id });
+exports.banUser = async (req, res, next) => {
+  try {
+    await userModel.removeUserValidation(req.params).catch((err) => {
+      err.statusCode = 400;
+      throw err;
+    });
 
-  if (!deletedUser) {
-    return res.status(404).json("There is not user");
+    const mainUser = await userModel.findOne({ _id: req.params.id }).lean();
+    if (!mainUser) {
+      return res.status(404).json("User not Found!");
+    }
+
+    const banUserResult = banUserModel.create({ phone: mainUser.phone });
+
+    if (banUserResult) {
+      return res.status(200).json({ msg: "User banned successfully" });
+    }
+    return res.status(500).json({ msg: "Error" });
+  } catch (error) {
+    next(error);
   }
-
-  return res.status(200).json("User Deleted Successfully");
 };
 
-exports.banUser = async (req, res) => {
-  const mainUser = await userModel.findOne({ _id: req.params.id }).lean();
-  const banUserResult = banUserModel.create({ phone: mainUser.phone });
+exports.getUserCourses = async (req, res, next) => {
+  try {
+    const userCourses = await courseUserModel
+      .find({ user: req.user._id })
+      .populate("course")
+      .lean();
 
-  if (banUserResult) {
-    return res.status(200).json({ msg: "User ban successfully" });
+    res.json(userCourses);
+  } catch (error) {
+    next(error);
   }
-  return res.status(500).json({ msg: 'Error' })
 };
 
-// exports.getOne = async (req, res) => {
-//   const course = await courseModel
-//     .findOne({ shortName: req.params.shortName })
-//     .populate("categoryID", "-password")
-//     .populate("creator", "-password")
-//     .lean();
+exports.updateUser = async (req, res, next) => {
+  try {
+    await userModel.updateUserValidation(req.body).catch((err) => {
+      err.statusCode = 400;
+      throw err;
+    });
 
-//   const sessions = await sessionModel.find({ course: course._id }).lean();
-//   const comments = await commentModel
-//     .find({ course: course._id })
-//     .populate("creator")
-//     .lean();
+    const { name, username, email, password, phone } = req.body;
 
-//   const courseStudentsCount = await courseUserModel
-//     .find({
-//       course: course._id,
-//     })
-//     .count();
-//   let isUserRegisteredToThisCourse = null;
-//   if (req.user) {
-//     isUserRegisteredToThisCourse = !!(await courseUserModel.findOne({
-//       user: req.user._id,
-//       course: course._id,
-//     }));
-//   } else {
-//     isUserRegisteredToThisCourse = false;
-//   }
+    const hashedPassword = await bcrypt.hash(password, 12);
 
-//   return res.json({
-//     ...course,
-//     courseStudentsCount,
-//     sessions,
-//     comments,
-//     isUserRegisteredToThisCourse,
-//   });
-// };
+    const user = await userModel.findOneAndUpdate(
+      { _id: req.user._id },
+      {
+        name,
+        username,
+        email,
+        password: hashedPassword,
+        phone,
+      }
+    );
 
-// exports.createSession = async (req, res) => {
-//   const { title, time } = req.body;
+    return res.json(user);
+  } catch (error) {
+    next(error);
+  }
+};
 
-//   const session = await sessionModel.create({
-//     title,
-//     time,
-//     course: req.params.id,
-//   });
+exports.changeUserRole = async (req, res, next) => {
+  try {
+    await userModel.changeUserRoleValidation(req.body).catch((err) => {
+      err.statusCode = 400;
+      throw err;
+    });
 
-//   return res.status(201).json(session);
-// };
+    const { role, id } = req.body;
+    console.log(role);
 
-// exports.register = async (req, res) => {
-//   const isUserAlreadyRegistered = await courseUserModel
-//     .findOne({ user: req.user._id, course: req.params.id })
-//     .lean();
+    const user = await userModel.findByIdAndUpdate(
+      { _id: id },
+      {
+        role: role,
+      }
+    );
 
-//   if (isUserAlreadyRegistered) {
-//     return res
-//       .status(409)
-//       .json({ message: "you are already registered to this course." });
-//   }
-
-//   await courseUserModel.create({
-//     user: req.user._id,
-//     course: req.params.id,
-//   });
-
-//   return res.status(201).json({ message: "you are registered successfully." });
-// };
-
-// exports.getCategoryCourses = async (req, res) => {
-//   const { categoryName } = req.params;
-//   const category = await categoryModel.find({ name: categoryName })
-//   if(category.length) {
-//     const categoryCourses = await courseModel.find({ categoryID: category[0]._id })
-//     res.json(categoryCourses)
-//   } else {
-//     res.json([])
-//   }
-// };
+    res.json({ msg: `User role changed to ${role} successfully` });
+  } catch (error) {
+    next(error);
+  }
+};

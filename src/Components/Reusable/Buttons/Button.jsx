@@ -2,36 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
- * @param {"primary" | "secondary" | "light" | "info" | "danger" | "loading"}
+ * @param {Object} props - Component props
+ * @param {"extra-small"|"small"|"medium"|"large"} props.size - The size of the button
+ * @param {"success"|"info"|"danger"} props.variant - The variant of the button
+ * @param {function} props.fn - The click handler function for the button
+ * @param {React.ReactNode} props.children - The content of the button
  */
-
-const Button = ({ icon, title, variant, action }) => {
+function Button({ variant, children, fn, size }) {
   return (
-    <button onClick={action} className={`button pt-0.5 active-animation ${variant}`}>
-      <span>{title}</span>
-      {icon && <span>{icon}</span>}
+    <button onClick={fn} className={`button ${variant} ${size}`}>
+      {children}
     </button>
   );
-};
+}
 
 Button.propTypes = {
-  icon: PropTypes.node,
-  title: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "light",
-    "info",
-    "danger",
-    "loading"
-  ]).isRequired,
-  action: PropTypes.func.isRequired,
-};
-
-Button.defaultProps = {
-  icon: null,
-  action: () => {},
-  variant: "primary",
+  size: PropTypes.oneOf(["extra-small", "small", "medium", "large"]).isRequired,
+  variant: PropTypes.oneOf(["info", "danger", "success"]).isRequired,
+  fn: PropTypes.func.isRequired,
+  children: PropTypes.node
 };
 
 export default Button;
