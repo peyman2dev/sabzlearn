@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
 import { IoMdOpen } from "react-icons/io";
 import { FiEdit, FiEye, FiMoreVertical } from "react-icons/fi";
 import { HiOutlineTrash } from "react-icons/hi2";
@@ -15,26 +15,27 @@ import useModal from "../../../../../Utils/Hooks/useModal";
 import ModalHeader from "../../../../Reusable/Modal/Deps/ModalHeader";
 import ModalProvider from "../../../../Reusable/Modal/ModalProvider";
 import ModalBody from "../../../../Reusable/Modal/Deps/ModalBody";
-import ModalFooter  from "../../../../Reusable/Modal/Deps/ModalFooter";
+import ModalFooter from "../../../../Reusable/Modal/Deps/ModalFooter";
 import Button from "../../../../Reusable/Buttons/Button";
 import { removeCourse } from "../../../../../Utils/Redux/actions/actions";
 import { ToastContainer } from "react-toastify";
+import useCourses from "../../../../../Utils/Hooks/ApiHooks/useCourses";
+import useCourseRemove from "../../../../../Utils/Hooks/ApiHooks/useCourseRemove";
+
 const Courses = () => {
-  const dispatch = useDispatch()
+  const {data: courses, refetch} = useCourses()
+  const {mutate: courseRemove } = useCourseRemove()
   const { quickSelect, selected } = useSelectbox();
-  const [target,setTarget] = useState({})
-  const {isOpen, toggleOpen} = useModal()
-  const [isLoading, setIsLoading] = useState(true);
-  const { courses } = useSelector((state) => state.server);
+  const [target, setTarget] = useState({});
+  const { isOpen, toggleOpen } = useModal();
   const [filteredProducts, setFilteredProducts] = useState([]);
   useEffect(() => {
     setFilteredProducts(courses);
-    setIsLoading(false);
   }, [courses]);
-  const inputRef = React.useRef()
+  const inputRef = React.useRef();
 
   const setDefaultProducts = () => {
-    inputRef.current.value = ''
+    inputRef.current.value = "";
     setFilteredProducts(courses);
   };
 
@@ -76,21 +77,32 @@ const Courses = () => {
     setFilteredProducts(
       _.filter(
         courses,
-        (course) => course.name.toLowerCase().includes(_value.toLowerCase()) || course.shortName.toLowerCase().includes(_value.toLowerCase())
+        (course) =>
+          course.name.toLowerCase().includes(_value.toLowerCase()) ||
+          course.shortName.toLowerCase().includes(_value.toLowerCase())
       )
     );
   };
 
-  const courseRemoveHandler = () => (dispatch(removeCourse(target?._id)), toggleOpen())
+  const courseRemoveHandler = () => {
+    toggleOpen();
+    courseRemove(target?._id, {
+      onSuccess: () => {
+        refetch()
+      }
+    })
+  };
 
-  if (isLoading) {
-    return <>درحال لود کردن ...</>;
-  } else {
     return (
       <>
-      <ToastContainer bodyClassName={"font-Dana-Regular"}/>
+      <Routes>
+        <Route path="" element={
+          <>
+        <ToastContainer bodyClassName={"font-Dana-Regular"} />
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-Dana-Demi ">داشبورد | مدیریت دوره ها</h1>
+          <h1 className="text-2xl font-Dana-Demi ">
+            داشبورد | مدیریت دوره ها
+          </h1>
         </div>
         <section className="mt-10 dark:bg-dark-800 rounded-sm shadow-md">
           <header className="p-5 flex items-center justify-between">
@@ -146,7 +158,7 @@ const Courses = () => {
             <div>
               {filteredProducts && filteredProducts.length ? (
                 filteredProducts.map((course) => (
-                  <div className="h-24 child:w-full text-center flex items-center justify-evenly">
+                  <div key={course._id} className="h-24 child:w-full text-center flex items-center justify-evenly">
                     <p className="">
                       <Link to={`/course/${course.shortName}`}>
                         <img
@@ -190,10 +202,13 @@ const Courses = () => {
                           </button>
                         </Tippy>
                         <Tippy content="حذف">
-                          <button onClick={() => {
-                            toggleOpen()
-                            setTarget(course)
-                          }} className="bg-red-700 ">
+                          <button
+                            onClick={() => {
+                              toggleOpen();
+                              setTarget(course);
+                            }}
+                            className="bg-red-700 "
+                          >
                             <HiOutlineTrash />
                           </button>
                         </Tippy>
@@ -227,29 +242,37 @@ const Courses = () => {
           <footer></footer>
         </section>
 
-<ModalProvider isOpen={isOpen}  toggleModal={toggleOpen} >
-        <Modal >
-              <ModalHeader >
-                <p>
-                  حذف دوره
-                </p>
-              </ModalHeader>
-              <ModalBody>
-                <p className="text-center">
-                  آیا از حذف دوره<span className="px-2 text-sm text-sky-600 dark:bg-dark-900">({target?.name})</span> مطمئن هستید؟
-                </p>
-              </ModalBody>
-              <ModalFooter>
-                <Button fn={toggleOpen}  variant="danger"> 
-                  انصراف
-                </Button>
-                <Button variant="success" fn={courseRemoveHandler} >تائید</Button> 
-              </ModalFooter>
-        </Modal>
-</ModalProvider>
+        <ModalProvider isOpen={isOpen} toggleModal={toggleOpen}>
+          <Modal>
+            <ModalHeader>
+              <p>حذف دوره</p>
+            </ModalHeader>
+            <ModalBody>
+              <p className="text-center">
+                آیا از حذف دوره
+                <span className="px-2 text-sm text-sky-600 dark:bg-dark-900">
+                  ({target?.name})
+                </span>
+                مطمئن هستید؟
+              </p>
+            </ModalBody>
+            <ModalFooter>
+              <Button fn={toggleOpen} variant="danger" size="extra-small" >
+                انصراف
+              </Button>
+              <Button variant="success"  size="extra-small" fn={courseRemoveHandler}>
+                تائید
+              </Button>
+            </ModalFooter>
+          </Modal>
+        </ModalProvider>
+        </>
+        }/>
+        </Routes>
+        <Outlet />
+
       </>
     );
-  }
 };
 
 export default Courses;

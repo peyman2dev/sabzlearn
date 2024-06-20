@@ -21,7 +21,7 @@ import Home from "../Components/Pages/Dashboard/Pages/Home/Home";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories/Categories";
 import { GrArticle } from "react-icons/gr";
 import { PercentOutlined } from "@mui/icons-material";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import _ from "lodash";
 import Tickets from "../Components/Pages/Dashboard/Pages/Tickets/Tickets";
 import Articles from "../Components/Pages/Dashboard/Pages/Articles/Articles";
@@ -106,23 +106,7 @@ const Dashboard = () => {
     <section className="flex min-h-screen dark:bg-dark-900">
       <Sidebar routes={routes} />
       <main className="w-[80%] mx-auto pt-10">
-        <Routes>
-          {_.map(routes, (route) => (
-            <>
-            <Route path={route.to} element={route.element} key={route.id} />
-            {
-              route.children?.length && _.map(route.children, child => (
-                <Route path={child.to} element={child.element} key={child.id}/>
-              ))
-            }
-            
-            </>
-          ))}
-          {
-            
-          }
-
-        </Routes>
+        <Outlet />
       </main>
     </section>
   );

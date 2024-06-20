@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { courseRemove, createSession, getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers, removeCourse, sessionRemove } from "../actions/actions.js";
+import { courseRemove, courseUpload, createSession, getArticles, getCategories, getCourses, getLogin, getMe, getMeuns, getRegister, getUsers, removeCourse, sessionRemove } from "../actions/actions.js";
 import 'react-toastify/ReactToastify.min.css'
 import { redirect } from "react-router-dom";
 import toast from "../../../Components/Reusable/Toast/Toast.js";
@@ -80,6 +80,7 @@ const serverReducer = createSlice({
                 toast.success("دوره با موفقیت حذف گردید !")
             })
             .addCase(removeCourse.rejected, (state, action) => {
+                console.log(action)
                 toast.error("عملیات با خطا مواجه شد")
                 throw new Error(action)
             })
@@ -94,11 +95,23 @@ const serverReducer = createSlice({
                 toast.success("جلسه با موفقیت  حذف گردید :)")
             })
             .addCase(sessionRemove.rejected, (state, action) => {
+                console.log(action.payload)
                 toast.error("عملیات با خطا مواجه شد")
             })
             .addCase(removeCourse.fulfilled, (state, action) => {
                 toast.success("دوره با موفقیت حذف گردید !")
             })
+            .addCase(courseUpload.fulfilled, (state, action) => {
+                console.log(action)
+                toast.success("دوره با موفقیت ایجاد گردید !", () => {
+                    window.history.back()
+                })
+            })
+            .addCase(courseUpload.rejected, (state, action) => {
+                console.log(action)
+                toast.error("عملیات با خطا مواجه شد")
+            })
+
     }
 })
 

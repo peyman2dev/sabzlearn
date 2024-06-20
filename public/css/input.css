@@ -331,3 +331,10 @@ div.card-component.information-card {
   @apply dark:text-dark-900
 }
 
+*::placeholder {
+  @apply dark:text-zinc-500/90 text-xs
+}
+
+.ck-content.ck-editor__editable {
+  @apply max-h-[500px]
+}

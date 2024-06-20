@@ -5,6 +5,6 @@ export default function Error({
     target
 }) {
   return (
-    errors[target] && <p className='text-xs text-red-500'>* {errors[target].message}</p>
+    errors[target] && <p className='text-xs py-2 text-red-500'>* {errors[target].message}</p>
   )
 }

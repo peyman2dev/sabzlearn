@@ -3,7 +3,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "tippy.js/dist/tippy.css";
 const StyledLink = ({ route, toggle }) => {
-  console.log(route);
   return (
     <Tippy content={route.title} placement="top" disabled={toggle}>
       <NavLink

@@ -2,9 +2,9 @@ import { toast as t, Bounce } from "react-toastify";
 const localTheme = localStorage.getItem('theme')
 
 const toast = {
-    success: (message, fn) => {
+    success: (message, fn, time) => {
         t.success(message, {
-            autoClose: 1500,
+            autoClose: time? time: 1500,
             position: "top-left",
             closeOnClick: true,
             transition: Bounce,
@@ -12,7 +12,7 @@ const toast = {
             onClose: fn ? fn : () => window.location.reload()
         })
     },
-    error: (message, fn) => {
+    error: (message, fn, time) => {
         t.error(message, {
             autoClose: 2500,
             position: "top-left",

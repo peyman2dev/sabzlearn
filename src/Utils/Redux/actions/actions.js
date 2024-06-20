@@ -136,3 +136,16 @@ export const removeCourse = createAsyncThunk(
             .then(r => r.data).then(d => d)
     }
 )
+
+export const courseUpload = createAsyncThunk(
+    "serverReducer/courseUpload",
+    async (course ) => {
+        return api.post("/courses", course, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "multipart/form-data"
+            }
+        }).then(r => r.data)
+        .then(d => d)
+    }
+)

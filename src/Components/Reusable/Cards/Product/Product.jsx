@@ -11,7 +11,7 @@ export default function Product(props) {
           url={shortURL}
           children={
             <img
-            src={props.cover}
+            src={`/backend/public/courses/covers/${props.cover}`}
             alt={props.name}
             className="w-full h-full object-cover"
           />

@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 
-export default function AdminRoute({ children }) {
+export default function AdminRoute() {
   const { user } = useSelector((state) => state.server);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -59,7 +60,7 @@ export default function AdminRoute({ children }) {
       </div>
     );
   } else if (!isLoading && isAuthorized) {
-    return children;
+    return <Outlet />;
   } else {
     return <div>You haven't access to this route</div>;
   }
