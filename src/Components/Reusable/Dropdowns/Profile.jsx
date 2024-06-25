@@ -28,7 +28,7 @@ export default function Profile({customStyle}) {
         onClick={() => setShow(!show)}
         className={`${
           show ? "" : "opacity-0 invisible"
-        } duration-150 fixed z-10 top-0 right-0 w-full h-screen bg-black/30 backdrop-blur-sm`}
+        } duration-150 fixed z-10 top-0 right-0 w-full h-screen bg-black/50`}
       ></div>
       <div
         className={`${

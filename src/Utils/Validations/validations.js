@@ -19,7 +19,6 @@ const courseUploadSchema = y.object().shape({
     name: y.string().min(3, "عنوان محصول حداقل باید شمامل 3 کلمه باشد ..").max(60).required("عنوان محصول اجباری ست !"),
     price: y.number("قیمت فقط میتواند حاصل ارقام باشد").required("لطفا قیمت محصول را وارد نمائید .."),
     status: y.string().required("این فیلد اجباری ست !"),
-    description: y.string().required("لطفا توضیحات این محصول را وارد نمائید .."),
     shortName: y.string().min(3, "عنوان کوتاه محصول حداقل باید شمامل 3 کلمه باشد ..").required("عنوان کوتاه محصول را وارد نمائید ..."),
     categoryID: y.string().required("لطفا دسته بندی محصول را وارد نمائید .."),
 })

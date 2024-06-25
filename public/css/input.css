@@ -77,7 +77,7 @@ button {
 }
 
 .form {
-  @apply lg:w-[440px] child:w-full p-6 dark:bg-[#2F3542] bg-white rounded-2xl  lg:max-h-max flex flex-col  w-full;
+  @apply lg:w-[440px] child:w-full p-6 dark:bg-dark-800 bg-white rounded-2xl  lg:max-h-max flex flex-col  w-full;
 }
 
 .active-animation {
@@ -85,7 +85,7 @@ button {
 }
 
 .form-input {
-  @apply w-full block h-12 my-3 dark:bg-[#252a35] outline-none bg-[#f1f1f16c] rounded-md px-5;
+  @apply w-full block h-12 my-3 dark:bg-dark-700 outline-none bg-[#f1f1f16c] rounded-md px-5;
 }
 
 .form-input::placeholder {
@@ -335,6 +335,8 @@ div.card-component.information-card {
   @apply dark:text-zinc-500/90 text-xs
 }
 
-.ck-content.ck-editor__editable {
-  @apply max-h-[500px]
+
+.ql-editor {
+  direction: rtl!important;
+  width: 100%;
 }

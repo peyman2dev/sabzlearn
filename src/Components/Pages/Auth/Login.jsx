@@ -86,7 +86,7 @@ export default function Login() {
           >
             ورود
           </button>
-          <div className="mt-7 flex items-center justify-center before:absolute before:px-3 text-sm text-zinc-500 dark:text-slate-500 before:bg-white before:dark:bg-[#2F3542] before:content-['وارد_شوید_با'] relative w-full h-px bg-black/10"></div>
+          <div className="mt-7 flex items-center justify-center before:absolute before:px-3 text-sm text-zinc-500 dark:text-slate-500 before:bg-white before:dark:bg-dark-800 before:content-['وارد_شوید_با'] relative w-full h-px bg-black/10"></div>
           <div className="mt-6 h-14 gap-1 bg-[#00000012] flex rounded-md select-none items-center px-3 justify-center shadow-md active-animation cursor-pointer">
             <span>ورود با جیمیل</span>
             <img

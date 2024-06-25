@@ -8,7 +8,7 @@ export default function Product(props) {
     <article className="bg-white dark:bg-dark-800 rounded-xl overflow-hidden w-full">
       <header className="h-[167px] rounded-xl overflow-hidden ">
         <Link
-          url={shortURL}
+          to={shortURL}
           children={
             <img
             src={`/backend/public/courses/covers/${props.cover}`}
@@ -18,17 +18,17 @@ export default function Product(props) {
           }
         />
       </header>
-      <main className="border-b border-white/5 mx-5 py-3">
+      <main className="border-b h-[184px] border-white/5 mx-5 py-3">
         <Link
-          url={shortURL}
+          to={shortURL}
           children={
-            <h3 className="font-Dana-Demi h-[55px] text-lg text-slate-800 dark:text-white line-clamp-2">
+            <h3 className="font-Dana-Demi h-[55px] text-slate-800 dark:text-white line-clamp-2">
               {props.name}
             </h3>
           }
         />
-        <p className="mt-2.5 h-[47px] dark:text-slate-400 text-zinc-500">
-          {props.description}
+        <p dangerouslySetInnerHTML={{__html: props.description}} className="mt-2.5 h-[60px] font-Dana-Regular line-clamp-3 text-sm dark:text-zinc-400 text-zinc-500">
+
         </p>
         <div className="mt-2.5 flex items-center justify-between">
           <div className="flex items-center gap-1">

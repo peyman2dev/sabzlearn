@@ -4,9 +4,10 @@ import { useSelector } from "react-redux";
 import _ from "lodash";
 import Product from "../../Reusable/Cards/Product/Product";
 import Circle from "../../Reusable/Cards/Product/Circle";
+import useCourses from "../../../Utils/Hooks/ApiHooks/useCourses";
 
 export default function LastCourses() {
-    const {courses} = useSelector(state => state.server)
+  const {data:courses, isLoading, isFetching} = useCourses()
   return (
     <section className="container w-[95%] mx-auto sm:w-full my-[100px]">
       <Title color={"bg-yellow-500"} title={"آخرین دوره های سبزلرن"}

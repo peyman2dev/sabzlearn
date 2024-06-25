@@ -1,7 +1,12 @@
 import React from "react";
 
-export default function TableRow({ children }) {
+const TableRow = ({ children }) => {
   return (
-    <div className="w-full child:w-full items-start  dark:even:bg-[#1b255983] even:bg-stone-50   justify-between flex">{children}</div>
+    <div
+     className="h-24 child:w-full text-sm text-center flex items-center justify-evenly">
+      {children}
+    </div>
   );
-}
+};
+
+export default TableRow;

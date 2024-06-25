@@ -1,12 +1,7 @@
 import React from "react";
 import Sidebar from "../Components/Pages/Dashboard/Components/Sidebar";
 import { HiOutlineFolderOpen, HiOutlineUsers } from "react-icons/hi2";
-import { LuFolderCog } from "react-icons/lu";
-import { BsFolderPlus } from "react-icons/bs";
-import { MdOutlineMovie, MdMovieEdit } from "react-icons/md";
 import CourseCreate from "../Components/Pages/Dashboard/Pages/Courses/CourseCreate";
-import Sessions from "../Components/Pages/Dashboard/Pages/Courses/Sessions/Sessions";
-import SessionCreate from "../Components/Pages/Dashboard/Pages/Courses/Sessions/SessionCreate";
 import Courses from "../Components/Pages/Dashboard/Pages/Courses/Courses";
 import {
   Category2,
@@ -21,7 +16,7 @@ import Home from "../Components/Pages/Dashboard/Pages/Home/Home";
 import Categories from "../Components/Pages/Dashboard/Pages/Categories/Categories";
 import { GrArticle } from "react-icons/gr";
 import { PercentOutlined } from "@mui/icons-material";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet} from "react-router-dom";
 import _ from "lodash";
 import Tickets from "../Components/Pages/Dashboard/Pages/Tickets/Tickets";
 import Articles from "../Components/Pages/Dashboard/Pages/Articles/Articles";
@@ -103,7 +98,7 @@ const Dashboard = () => {
     },
   ];
   return (
-    <section className="flex min-h-screen dark:bg-dark-900">
+    <section className="flex min-h-screen bg-gray-100 dark:bg-dark-900">
       <Sidebar routes={routes} />
       <main className="w-[80%] mx-auto pt-10">
         <Outlet />

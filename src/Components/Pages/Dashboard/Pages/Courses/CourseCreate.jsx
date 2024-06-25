@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 import useCourseCreate from "../../../../../Utils/Hooks/ApiHooks/useCourseCreate";
 
 const CourseCreate = () => {
+  const [desc, setDesc] = useState(null);
   const { categories } = useSelector((state) => state.server);
   const { mutate: newCourse } = useCourseCreate();
   const [options, setOptions] = useState([]);
@@ -24,7 +25,6 @@ const CourseCreate = () => {
     register,
     handleSubmit,
     getValues,
-
     setValue,
     watch,
     formState: { errors },
@@ -32,7 +32,6 @@ const CourseCreate = () => {
     defaultValues: {
       name: "",
       price: null,
-      description: "",
       status: Number(null),
       shortName: "",
       categoryID: "",
@@ -74,13 +73,15 @@ const CourseCreate = () => {
 
   const submitted = (values) => {
     const formData = new FormData();
+    let userNameInput = document.getElementById("username");
+
 
     formData.append("name", values.name);
     formData.append("shortName", values.shortName);
     formData.append("categoryID", values.categoryID);
     formData.append("price", values.price);
     formData.append("status", values.status);
-    formData.append("description", values.description);
+    formData.append("description", desc);
     formData.append("cover", file);
 
     newCourse(formData);
@@ -115,7 +116,7 @@ const CourseCreate = () => {
       </div>
       <form
         onSubmit={handleSubmit(submitted)}
-        className="w-full p-4 dark:bg-dark-800 rounded-lg"
+        className="w-full p-4 dark:bg-dark-800 bg-white shadow-md rounded-lg"
       >
         <div className="w-full grid mb-4 grid-cols-3 gap-4 child:w-full">
           <label htmlFor="product-name">
@@ -126,7 +127,7 @@ const CourseCreate = () => {
               id="product-name"
               {...register("name")}
               type="text"
-              className="w-full h-10 rounded-md border text-sm dark:border-white/5 px-4 outline-none"
+              className="w-full h-10 bg-gray-50 dark:bg-dark-900 rounded-md border text-sm dark:border-white/5 px-4 outline-none"
               placeholder="عنوان محصول را وارد نمائید .."
             />
             <Error errors={errors} target={"name"} />
@@ -141,7 +142,7 @@ const CourseCreate = () => {
               id="product-price"
               {...register("price")}
               type="number"
-              className="w-full h-10 rounded-md border text-sm dark:border-white/5 px-4 outline-none"
+              className="w-full h-10 bg-gray-50 dark:bg-dark-900 rounded-md border text-sm dark:border-white/5 px-4 outline-none"
               placeholder="قیمت محصول را وارد نمائید .."
             />
             <div className="text-xs pr-4 text-teal-500">
@@ -162,7 +163,7 @@ const CourseCreate = () => {
               id="product-shortName"
               {...register("shortName")}
               type="text"
-              className="w-full h-10 rounded-md border text-sm dark:border-white/5 px-4 outline-none"
+              className="w-full h-10 rounded-md bg-gray-50 dark:bg-dark-900 border text-sm dark:border-white/5 px-4 outline-none"
               placeholder="عنوان کوتاه محصول را وارد نمائید .."
             />
             <Error errors={errors} target={"shortName"} />
@@ -194,12 +195,15 @@ const CourseCreate = () => {
             fileSaveTo={setFile}
           />
         </div>
-        <TextEditor data={getValues("description")} dataSet={setValue} />
-        <Error errors={errors} target={"description"} />
-
-        <Button className="my-2" size="small" type="submit" variant="success">
-          ایجاد دوره
-        </Button>
+        <div>
+          <TextEditor setValue={setDesc} />
+        </div>
+        {/* data={getValues("description")} dataSet={setValue}  */}
+        <div>
+          <Button className="my-2" size="small" type="submit" variant="success">
+            ایجاد دوره
+          </Button>
+        </div>
       </form>
     </>
   );

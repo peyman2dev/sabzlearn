@@ -1,24 +1,20 @@
-import React from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import '@ckeditor/ckeditor5-build-classic/build/translations/fa';
+import React, { useEffect } from "react";
+import "quill/dist/quill.snow.css";
+import { useQuill } from "react-quilljs";
 
-const TextEditor = ({ dataSet, data }) => {
+const TextEditor = ({ setValue }) => {
+  const { quill, quillRef } = useQuill();
+  useEffect(() => {
+    if (quill) {
+      quill.format("align", "right");
+      quill.on("text-change", () => setValue(quill.root.innerHTML)); // Get innerHTML using quill)
+    }
+  }, [quill]);
+
   return (
-    <CKEditor
-      
-      editor={ClassicEditor}
-      data={data}
-      onChange={(event, editor) => {
-        let d = editor.getData()
-        dataSet("description",d)
-      }}
-      config={{
-        placeholder: "توضیحات محصول را وارد نمائید ..",
-        language: 'fa',
-      }}
-      
-    />
+    <div className="w-full ">
+      <div ref={quillRef}></div>
+    </div>
   );
 };
 

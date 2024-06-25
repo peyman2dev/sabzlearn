@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
+// Sabzlearn.ir - ReactJS Telegram Group
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 export default function AdminRoute() {
-  const { user } = useSelector((state) => state.server);
+  const { user } = useSelector((state) => state.server); // Your AuthContext
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthorized, setIsAuthorized] = useState(false);
 

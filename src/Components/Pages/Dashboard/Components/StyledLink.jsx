@@ -10,7 +10,7 @@ const StyledLink = ({ route, toggle }) => {
         to={route.to}
         className={({ isActive }) =>
           isActive
-            ? `nav-link dark:bg-dark-900 rounded-md ${
+            ? `nav-link bg-green-500 text-white dark:bg-dark-900 rounded-md ${
                 toggle ? " " : " rounded-full overflow-hidden "
               }`
             : `nav-link  ${toggle ? "" : ""}`
